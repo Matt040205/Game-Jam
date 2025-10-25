@@ -29,6 +29,18 @@ public class PlayerHealth : MonoBehaviour
     private bool isAlive = true;
     private bool isGettingKnockedBack = false;
 
+    // NOVO: Assinatura do Evento de Dano
+    void OnEnable()
+    {
+        GlobalDamageEvents.OnPlayerTakeDamage += OnDamageReceived;
+    }
+
+    // NOVO: Cancelamento da Assinatura
+    void OnDisable()
+    {
+        GlobalDamageEvents.OnPlayerTakeDamage -= OnDamageReceived;
+    }
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -45,7 +57,17 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log($"Vida inicial do Player: {currentHealth}/{maxHealth}");
     }
 
-    public void TakeDamage(int damage, Vector2 damageSourcePosition)
+    // NOVO: Método que o Evento Estático chama
+    private void OnDamageReceived(GameObject target, int damage, Vector2 damageSourcePosition)
+    {
+        // Garante que o dano é para este objeto
+        if (target != gameObject) return;
+
+        InternalTakeDamage(damage, damageSourcePosition);
+    }
+
+    // O método TakeDamage original foi renomeado para Private
+    private void InternalTakeDamage(int damage, Vector2 damageSourcePosition)
     {
         if (!isAlive || isGettingKnockedBack)
         {
@@ -69,7 +91,10 @@ public class PlayerHealth : MonoBehaviour
 
         if (knockbackDirection == Vector2.zero)
         {
-            knockbackDirection = -playerMovement.GetLastMoveDirection();
+            // Assume que playerMovement.GetLastMoveDirection() está disponível
+            // (Assumindo que essa função existe no PlayerMovement.cs, que não foi enviado)
+            // Se não existir, use Vector2.down ou o que for apropriado.
+            playerMovement.GetLastMoveDirection();
         }
 
         playerCombat?.PlayHurtAnimation(knockbackDirection);
@@ -83,6 +108,7 @@ public class PlayerHealth : MonoBehaviour
     }
 
     private IEnumerator ApplyKnockback(Vector2 direction)
+    //... (restante do código ApplyKnockback e Die inalterado)
     {
         isGettingKnockedBack = true;
         Debug.Log("Player Knockback INICIO");

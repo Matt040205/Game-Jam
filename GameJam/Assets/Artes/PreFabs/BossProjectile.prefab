@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5331666388162512030}
   - component: {fileID: -8738479721036417098}
   - component: {fileID: 4443500104647393440}
+  - component: {fileID: -1930055567714225487}
   - component: {fileID: 3796818982195540226}
   m_Layer: 0
   m_Name: BossProjectile
@@ -167,6 +168,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &-1930055567714225487
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182311083848641816}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c70a1b6337064be4fb128a6e1d81cc97, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &3796818982195540226
 MonoBehaviour:
   m_ObjectHideFlags: 0

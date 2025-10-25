@@ -19,6 +19,18 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private bool explodeOnDeath = false;
     [SerializeField] private GameObject explosionPrefab;
 
+    // NOVO: Assinatura do Evento de Dano
+    void OnEnable()
+    {
+        GlobalDamageEvents.OnEnemyTakeDamage += OnDamageReceived;
+    }
+
+    // NOVO: Cancelamento da Assinatura
+    void OnDisable()
+    {
+        GlobalDamageEvents.OnEnemyTakeDamage -= OnDamageReceived;
+    }
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -30,7 +42,17 @@ public class EnemyHealth : MonoBehaviour
         Debug.Log($"Inimigo {gameObject.name} Iniciado com {currentHealth} de vida.");
     }
 
-    public void TakeDamage(int damage)
+    // NOVO: Método que o Evento Estático chama
+    private void OnDamageReceived(GameObject target, int damage)
+    {
+        // Garante que o dano é para este objeto
+        if (target != gameObject) return;
+
+        InternalTakeDamage(damage);
+    }
+
+    // O método TakeDamage original foi renomeado para Private
+    private void InternalTakeDamage(int damage)
     {
         if (currentHealth <= 0) return;
 
@@ -38,6 +60,7 @@ public class EnemyHealth : MonoBehaviour
         Debug.Log($"Inimigo {gameObject.name} tomou {damage} de dano. Vida restante: {currentHealth}");
 
         if (hurtSound != null)
+        //... (restante do código Die e OnDestroy inalterado)
         {
             audioSource.PlayOneShot(hurtSound);
         }

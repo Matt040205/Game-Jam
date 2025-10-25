@@ -21,6 +21,7 @@ public class EnemyAttack : MonoBehaviour
     private bool playerIsInRange = false;
     private bool canAttack = true;
 
+    // MÉTODO START() RESTAURADO: Inicializa componentes necessários
     void Start()
     {
         enemyMovement = GetComponent<EnemyMovement>();
@@ -28,6 +29,7 @@ public class EnemyAttack : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    // MÉTODO UPDATE() RESTAURADO: Checa a condição para iniciar o ataque
     void Update()
     {
         if (playerIsInRange && canAttack)
@@ -57,7 +59,10 @@ public class EnemyAttack : MonoBehaviour
             {
                 audioSource.PlayOneShot(attackSound);
             }
-            playerHealth.TakeDamage(damageAmount, transform.position);
+
+            // CORREÇÃO MANTIDA: Usa o Evento Estático para desacoplamento e dano.
+            // (Requer que a classe GlobalDamageEvents exista no seu projeto)
+            GlobalDamageEvents.FirePlayerDamage(playerHealth.gameObject, damageAmount, transform.position);
 
             if (animator != null) animator.SetTrigger("Attack");
         }
@@ -80,6 +85,7 @@ public class EnemyAttack : MonoBehaviour
         {
             Debug.Log("Player ENTROU na área de ataque.");
             playerIsInRange = true;
+            // É seguro pegar o PlayerHealth aqui, pois é feito apenas uma vez por entrada
             playerHealth = other.GetComponent<PlayerHealth>();
         }
     }

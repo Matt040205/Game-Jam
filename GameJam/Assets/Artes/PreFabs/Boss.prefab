@@ -81,6 +81,7 @@ GameObject:
   - component: {fileID: 1374419735603836174}
   - component: {fileID: 1567597138331371313}
   - component: {fileID: 5998740060484996601}
+  - component: {fileID: 7073187236102468952}
   - component: {fileID: 1457469004349434979}
   - component: {fileID: -619467365466756912}
   m_Layer: 0
@@ -331,6 +332,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &7073187236102468952
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7791863348494347475}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 08b802dd8bac0c6459e5ce1bdee69d56, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1457469004349434979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,8 +367,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  enemyPrefabsToSpawn: []
-  spawnPoints: []
+  enemyPrefabsToSpawn:
+  - {fileID: 5964664012812006386, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
+  - {fileID: 430422292321214331, guid: f2be54dce01a2414f8eb5147717d4f7b, type: 3}
+  - {fileID: 6262305177321179643, guid: 048f724f814a782488a658f928b515b5, type: 3}
+  spawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   enemiesPerWave: 3
   totalWaves: 2
   beamHazardPrefab: {fileID: 0}

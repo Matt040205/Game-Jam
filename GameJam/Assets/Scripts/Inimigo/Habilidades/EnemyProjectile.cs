@@ -38,13 +38,14 @@ public class EnemyProjectile : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Proj�til Inimigo acertou o Player!");
+            // CORREÇÃO do erro de codificação "Projtil"
+            Debug.Log("Projétil Inimigo acertou o Player!");
 
-            PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
-            if (playerHealth != null)
-            {
-                playerHealth.TakeDamage(damageAmount, transform.position);
-            }
+            // CÓDIGO ANTIGO: PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
+            // CÓDIGO ANTIGO: if (playerHealth != null) { ... playerHealth.TakeDamage(damageAmount, transform.position); }
+
+            // NOVO: Dispara o evento de dano (Substitui o GetComponent)
+            GlobalDamageEvents.FirePlayerDamage(other.gameObject, damageAmount, transform.position);
 
             if (hitSound != null)
             {

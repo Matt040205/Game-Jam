@@ -10,16 +10,13 @@ public class PlayerHitbox : MonoBehaviour
         {
             Debug.Log($"Hitbox do Player tocou em: {other.name}");
 
-            EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
-            if (enemyHealth != null)
-            {
-                Debug.Log($"Tentando causar {damage} de dano ao inimigo.");
-                enemyHealth.TakeDamage(damage);
-            }
-            else
-            {
-                Debug.LogWarning("Hitbox tocou em 'Enemy' mas não encontrou o script EnemyHealth.");
-            }
+            // CÓDIGO ANTIGO: EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
+            // CÓDIGO ANTIGO: if (enemyHealth != null) { ... enemyHealth.TakeDamage(damage); }
+
+            // NOVO: Dispara o evento de dano (Substitui o GetComponent)
+            GlobalDamageEvents.FireEnemyDamage(other.gameObject, damage);
+
+            Debug.Log($"Tentando causar {damage} de dano ao inimigo. (Via Evento)");
         }
     }
 }

@@ -9,6 +9,18 @@ public class PlayerMovement : MonoBehaviour
     public float dashDuration = 0.2f;
     public float dashCooldown = 1f;
 
+    [Header("Stamina")]
+    public float maxStamina = 100f;
+    public float dashStaminaCost = 30f;
+
+    [Header("Stamina Recharge Rules")]
+    public float staminaRechargeDelay = 3f; // Tempo para começar a recarregar após o Dash
+    public float staminaRechargeIdleRate = 10f; // Recarga parado (por segundo)
+    public float staminaRechargeMovingRate = 5f; // Recarga andando (por segundo)
+
+    private float currentStamina;
+    private float lastDashTime = -100f; // Variável de controle para o delay de recarga
+
     [Header("Audio")]
     public AudioClip dashSound;
     private AudioSource audioSource;
@@ -34,10 +46,15 @@ public class PlayerMovement : MonoBehaviour
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
         lastMoveDirection = Vector2.down;
+
+        currentStamina = maxStamina;
+        Debug.Log($"Stamina inicial do Player: {currentStamina:F2}");
     }
 
     void Update()
     {
+        HandleStaminaRecharge();
+
         if (canMove)
         {
             float inputX = Input.GetAxisRaw("Horizontal");
@@ -87,6 +104,29 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void HandleStaminaRecharge()
+    {
+        // NOVA LÓGICA 1: Checa o delay de 3 segundos
+        if (Time.time < lastDashTime + staminaRechargeDelay)
+        {
+            // Opcional: log para mostrar o tempo restante do delay
+            Debug.Log($"Stamina em cooldown. Recarrega em: {lastDashTime + staminaRechargeDelay - Time.time:F2}s");
+            return;
+        }
+
+        if (currentStamina < maxStamina)
+        {
+            // NOVA LÓGICA 2: Determina a taxa de recarga baseada no movimento
+            float rechargeRate = isMoving ? staminaRechargeMovingRate : staminaRechargeIdleRate;
+
+            currentStamina += rechargeRate * Time.deltaTime;
+            currentStamina = Mathf.Min(currentStamina, maxStamina);
+
+            // Debug Log para a recarga
+            Debug.Log($"Stamina recarregando a {rechargeRate:F0} por segundo ({(isMoving ? "ANDANDO" : "PARADO")}). Valor: {currentStamina:F2}/{maxStamina:F2}");
+        }
+    }
+
     private void UpdateAnimations()
     {
         animator.SetBool("isMoving", isMoving);
@@ -111,6 +151,17 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator Dash()
     {
+        if (currentStamina < dashStaminaCost)
+        {
+            Debug.Log("Dash falhou: Stamina insuficiente!");
+            yield break;
+        }
+
+        // NOVO: Consome e registra o tempo do dash
+        currentStamina -= dashStaminaCost;
+        lastDashTime = Time.time;
+        Debug.Log($"Dash usado! Stamina restante: {currentStamina:F2}. COOLDOWN DE RECARGA INICIADO.");
+
         canDash = false;
         isDashing = true;
         canMove = false;
@@ -146,5 +197,15 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 GetLastMoveDirection()
     {
         return lastMoveDirection;
+    }
+
+    public float GetCurrentStamina()
+    {
+        return currentStamina;
+    }
+
+    public float GetMaxStamina()
+    {
+        return maxStamina;
     }
 }

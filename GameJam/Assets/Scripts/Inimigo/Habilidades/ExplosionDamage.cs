@@ -15,11 +15,12 @@ public class ExplosionDamage : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Explosão acertou o Player!");
-            PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
-            if (playerHealth != null)
-            {
-                playerHealth.TakeDamage(damage, transform.position);
-            }
+
+            // CÓDIGO ANTIGO: PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
+            // CÓDIGO ANTIGO: if (playerHealth != null) { ... playerHealth.TakeDamage(damage, transform.position); }
+
+            // NOVO: Dispara o evento de dano (Substitui o GetComponent)
+            GlobalDamageEvents.FirePlayerDamage(other.gameObject, damage, transform.position);
         }
     }
 }

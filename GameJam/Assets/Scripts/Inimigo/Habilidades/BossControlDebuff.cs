@@ -36,14 +36,14 @@ public class BossControlDebuff : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Proj�til do Boss acertou o Player!");
+            // CORRIGIDO: Erro de codificação 'Projétil'
+            Debug.Log("Projétil do Boss acertou o Player!");
 
-            PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
-            if (playerHealth != null)
-            {
-                playerHealth.TakeDamage(damageAmount, transform.position);
-            }
+            // CÓDIGO REFATORADO: Remove GetComponent e usa o Evento Estático para causar dano
+            GlobalDamageEvents.FirePlayerDamage(other.gameObject, damageAmount, transform.position);
 
+
+            // O debuff ainda precisa do GetComponent, pois a lógica de debuffs não foi refatorada
             PlayerDebuffs playerDebuffs = other.GetComponent<PlayerDebuffs>();
             if (playerDebuffs != null && !playerDebuffs.controlsInverted)
             {

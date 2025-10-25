@@ -40,16 +40,13 @@ public class LaserProjectile : MonoBehaviour
         {
             Debug.Log("Projétil acertou o Inimigo!");
 
-            EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
-            if (enemyHealth != null)
-            {
-                Debug.Log($"Tentando causar {damageAmount} de dano (Laser)...");
-                enemyHealth.TakeDamage(damageAmount);
-            }
-            else
-            {
-                Debug.LogWarning("Projétil tocou em 'Enemy' mas não encontrou o script EnemyHealth.");
-            }
+            // CÓDIGO ANTIGO: EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
+            // CÓDIGO ANTIGO: if (enemyHealth != null) { ... enemyHealth.TakeDamage(damageAmount); }
+
+            // NOVO: Dispara o evento de dano (Substitui o GetComponent)
+            GlobalDamageEvents.FireEnemyDamage(other.gameObject, damageAmount);
+
+            Debug.Log($"Tentando causar {damageAmount} de dano (Laser)... (Via Evento)");
 
             if (hitSound != null)
             {

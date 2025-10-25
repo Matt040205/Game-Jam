@@ -139,6 +139,10 @@ PrefabInstance:
       propertyPath: explosionPrefab
       value: 
       objectReference: {fileID: 1915289803133958237}
+    - target: {fileID: 5296731322856382753, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 566b392c5a8998f418572f4224901ce5, type: 2}
     - target: {fileID: 5964664012812006386, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
       propertyPath: m_Name
       value: Inimigo Explosivo

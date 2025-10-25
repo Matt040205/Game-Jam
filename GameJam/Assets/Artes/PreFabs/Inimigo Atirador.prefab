@@ -48,6 +48,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5296731322856382753, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 746a30280d7cbcc498f382a5d56f6979, type: 2}
     - target: {fileID: 5964664012812006386, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
       propertyPath: m_Name
       value: Inimigo Atirador
