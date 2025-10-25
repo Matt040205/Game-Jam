@@ -319,6 +319,17 @@ MonoBehaviour:
   deathSound: {fileID: 0}
   explodeOnDeath: 0
   explosionPrefab: {fileID: 0}
+  dropTable:
+  - prefab: {fileID: 7819283660314111462, guid: f2ce48d576cc9a24d856cc43aeb4771c, type: 3}
+    dropChance: 10
+  - prefab: {fileID: 7819283660314111462, guid: 616e449973db2194497b0f8b3f2f8530, type: 3}
+    dropChance: 10
+  - prefab: {fileID: 7819283660314111462, guid: 9db93ee8ec7655741942951083434a28, type: 3}
+    dropChance: 10
+  - prefab: {fileID: 7819283660314111462, guid: 30f1963e2838db2499bcf07ebfd0315e, type: 3}
+    dropChance: 10
+  - prefab: {fileID: 7819283660314111462, guid: 509b0b89e1b8e014dab872d9d748ecc9, type: 3}
+    dropChance: 20
 --- !u!82 &7499949027454289922
 AudioSource:
   m_ObjectHideFlags: 0

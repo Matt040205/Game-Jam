@@ -48,6 +48,74 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2168477567139048036, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
+      propertyPath: dropTable.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2168477567139048036, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
+      propertyPath: possibleDropItems.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2168477567139048036, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
+      propertyPath: dropTable.Array.data[0].prefab
+      value: 
+      objectReference: {fileID: 7819283660314111462, guid: f2ce48d576cc9a24d856cc43aeb4771c, type: 3}
+    - target: {fileID: 2168477567139048036, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
+      propertyPath: dropTable.Array.data[1].prefab
+      value: 
+      objectReference: {fileID: 7819283660314111462, guid: 616e449973db2194497b0f8b3f2f8530, type: 3}
+    - target: {fileID: 2168477567139048036, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
+      propertyPath: dropTable.Array.data[2].prefab
+      value: 
+      objectReference: {fileID: 7819283660314111462, guid: 9db93ee8ec7655741942951083434a28, type: 3}
+    - target: {fileID: 2168477567139048036, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
+      propertyPath: dropTable.Array.data[3].prefab
+      value: 
+      objectReference: {fileID: 7819283660314111462, guid: 30f1963e2838db2499bcf07ebfd0315e, type: 3}
+    - target: {fileID: 2168477567139048036, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
+      propertyPath: dropTable.Array.data[4].prefab
+      value: 
+      objectReference: {fileID: 7819283660314111462, guid: 509b0b89e1b8e014dab872d9d748ecc9, type: 3}
+    - target: {fileID: 2168477567139048036, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
+      propertyPath: 'possibleDropItems.Array.data[0]'
+      value: 
+      objectReference: {fileID: 7819283660314111462, guid: f2ce48d576cc9a24d856cc43aeb4771c, type: 3}
+    - target: {fileID: 2168477567139048036, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
+      propertyPath: 'possibleDropItems.Array.data[1]'
+      value: 
+      objectReference: {fileID: 7819283660314111462, guid: 616e449973db2194497b0f8b3f2f8530, type: 3}
+    - target: {fileID: 2168477567139048036, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
+      propertyPath: 'possibleDropItems.Array.data[2]'
+      value: 
+      objectReference: {fileID: 7819283660314111462, guid: 9db93ee8ec7655741942951083434a28, type: 3}
+    - target: {fileID: 2168477567139048036, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
+      propertyPath: 'possibleDropItems.Array.data[3]'
+      value: 
+      objectReference: {fileID: 7819283660314111462, guid: 30f1963e2838db2499bcf07ebfd0315e, type: 3}
+    - target: {fileID: 2168477567139048036, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
+      propertyPath: 'possibleDropItems.Array.data[4]'
+      value: 
+      objectReference: {fileID: 7819283660314111462, guid: 509b0b89e1b8e014dab872d9d748ecc9, type: 3}
+    - target: {fileID: 2168477567139048036, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
+      propertyPath: dropTable.Array.data[0].dropChance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2168477567139048036, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
+      propertyPath: dropTable.Array.data[1].dropChance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2168477567139048036, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
+      propertyPath: dropTable.Array.data[2].dropChance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2168477567139048036, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
+      propertyPath: dropTable.Array.data[3].dropChance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2168477567139048036, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
+      propertyPath: dropTable.Array.data[4].dropChance
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5296731322856382753, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
       propertyPath: m_Controller
       value: 
@@ -102,7 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d376c536d0906b438544039ac69ad51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyProjectilePrefab: {fileID: 8470534128708720691, guid: ede19052847722140bf17d542a338f73, type: 3}
+  enemyProjectilePrefab: {fileID: 767188145663784615, guid: 2288f7ff30008fa498f5a72d4fba9d4d, type: 3}
   firePoint: {fileID: 6245865709891693552}
   fireRate: 2
   shootSound: {fileID: 0}

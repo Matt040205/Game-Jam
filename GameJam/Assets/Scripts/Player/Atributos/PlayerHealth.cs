@@ -134,6 +134,21 @@ public class PlayerHealth : MonoBehaviour
         isGettingKnockedBack = false;
     }
 
+    public void Heal(int healAmount)
+    {
+        if (!isAlive) return;
+
+        currentHealth += healAmount;
+        currentHealth = Mathf.Min(currentHealth, maxHealth); // Garante que não excede o máximo
+
+        Debug.Log($"Player curou {healAmount} de vida. Vida restante: {currentHealth}");
+
+        // Opcional: Toca um som de cura aqui se você tiver um.
+        // audioSource.PlayOneShot(healSound);
+
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+    }
+
     private void Die()
     {
         if (!isAlive) return;

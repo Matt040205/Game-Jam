@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class BossJulgador : MonoBehaviour
 {
-    public enum BossState { Phase1, Phase2 }
+    // ENUM ATUALIZADO: Adiciona Phase3
+    public enum BossState { Phase1, Phase2, Phase3 }
     public BossState currentState = BossState.Phase1;
 
-    [Header("Refer�ncias Gerais")]
+    [Header("Referências Gerais")]
     private Transform playerTarget;
     private Animator animator;
     private BossHealth bossHealth;
     private Collider2D bossCollider;
+    private Rigidbody2D rb;
 
-    [Header("Fase 1: Invoca��o")]
+    [Header("Fase 1: Invocação")]
     public GameObject[] enemyPrefabsToSpawn;
     public Transform[] spawnPoints;
     public int enemiesPerWave = 3;
@@ -24,15 +26,22 @@ public class BossJulgador : MonoBehaviour
     public float beamSpawnRate = 10f;
     private float beamTimer;
 
-    [Header("Fase 2: Batalha")]
+    [Header("Fase 2 & 3: Batalha")]
     public float moveSpeed = 6f;
     public GameObject projectilePrefab;
     public GameObject meleeHitbox;
     public Transform projectileFirePoint;
     public float attackCooldown = 3f;
     private float attackTimer;
-    private Rigidbody2D rb;
     private bool isAttacking = false;
+    private float teleportChargeTime  = 1.5f;
+
+    [Header("Fase 3: Transição & Teleporte")]
+    // Assumindo maxHealth de 500. A transição é em 50%.
+    public int phase3HealthThreshold = 250;
+    public float teleportCooldown = 8f; // Tempo entre os teleportes
+    private float teleportTimer;
+    public float teleportMaxDistance = 15f; // Distância máxima para o teleporte
 
     void Start()
     {
@@ -57,6 +66,11 @@ public class BossJulgador : MonoBehaviour
         {
             UpdatePhase2();
         }
+        // NOVO: Lógica da Fase 3
+        else if (currentState == BossState.Phase3)
+        {
+            UpdatePhase3();
+        }
     }
 
     void StartPhase1()
@@ -65,7 +79,7 @@ public class BossJulgador : MonoBehaviour
         bossHealth.enabled = false;
         bossCollider.enabled = false;
         rb.isKinematic = true;
-        Debug.Log("BOSS: FASE 1 COME�OU.");
+        Debug.Log("BOSS: FASE 1 COMEÇOU.");
         StartCoroutine(SpawnWave());
         beamTimer = beamSpawnRate;
     }
@@ -80,7 +94,7 @@ public class BossJulgador : MonoBehaviour
         }
         else if (spawnedEnemies.Count == 0 && currentWave == totalWaves)
         {
-            Debug.Log("�ltima wave da Fase 1 derrotada!");
+            Debug.Log("Última wave da Fase 1 derrotada!");
             StartPhase2();
         }
 
@@ -112,6 +126,7 @@ public class BossJulgador : MonoBehaviour
     {
         Debug.Log("Boss: Soltando Feixe!");
         Vector3 spawnPos = playerTarget.position + (Vector3.up * 5);
+        // O Feixe sempre cai na posição do Player
         Instantiate(beamHazardPrefab, spawnPos, Quaternion.identity);
     }
 
@@ -122,11 +137,19 @@ public class BossJulgador : MonoBehaviour
         bossCollider.enabled = true;
         rb.isKinematic = false;
         animator.SetTrigger("StartPhase2");
-        Debug.Log("BOSS: FASE 2 COME�OU. Ele desceu para a batalha!");
+        attackTimer = attackCooldown;
+        Debug.Log("BOSS: FASE 2 COMEÇOU. Ele desceu para a batalha!");
     }
 
     void UpdatePhase2()
     {
+        // NOVO: Checagem de Transição para Fase 3
+        if (bossHealth.GetCurrentHealth() <= phase3HealthThreshold)
+        {
+            StartPhase3();
+            return;
+        }
+
         if (isAttacking) return;
 
         Vector2 direction = (playerTarget.position - transform.position).normalized;
@@ -138,6 +161,51 @@ public class BossJulgador : MonoBehaviour
         {
             ChooseAttack();
             attackTimer = attackCooldown;
+        }
+    }
+
+    // NOVO: Inicia Fase 3
+    void StartPhase3()
+    {
+        currentState = BossState.Phase3;
+        teleportTimer = teleportCooldown;
+        beamTimer = beamSpawnRate; // Reinicia o timer do feixe da Fase 1
+        Debug.Log("BOSS: FASE 3 COMEÇOU. Mistura de ataques e teleporte!");
+    }
+
+    // NOVO: Lógica da Fase 3 (Mistura)
+    void UpdatePhase3()
+    {
+        if (isAttacking) return;
+
+        // Movimento (Fase 2)
+        Vector2 direction = (playerTarget.position - transform.position).normalized;
+        rb.linearVelocity = direction * moveSpeed;
+        animator.SetBool("isMoving", true);
+
+        // Habilidade Feixe (Fase 1)
+        beamTimer -= Time.deltaTime;
+        if (beamTimer <= 0)
+        {
+            SpawnBeam();
+            beamTimer = beamSpawnRate;
+        }
+
+        // Ataques de Batalha (Fase 2)
+        attackTimer -= Time.deltaTime;
+        if (attackTimer <= 0)
+        {
+            // Adiciona chance de Teleporte
+            ChooseAttackPhase3();
+            attackTimer = attackCooldown;
+        }
+
+        // Timer do Teleporte
+        teleportTimer -= Time.deltaTime;
+        if (teleportTimer <= 0)
+        {
+            StartCoroutine(AttackTeleport());
+            teleportTimer = teleportCooldown;
         }
     }
 
@@ -154,18 +222,47 @@ public class BossJulgador : MonoBehaviour
         }
     }
 
+    // NOVO: Escolha de Ataque para a Fase 3 (inclui teleporte)
+    void ChooseAttackPhase3()
+    {
+        float distance = Vector2.Distance(transform.position, playerTarget.position);
+
+        if (Random.Range(0f, 1f) < 0.25f) // 25% de chance de teleportar em vez de atacar
+        {
+            StartCoroutine(AttackTeleport());
+        }
+        else if (distance < 3f)
+        {
+            StartCoroutine(AttackMelee());
+        }
+        else
+        {
+            StartCoroutine(AttackProjectile());
+        }
+    }
+
     IEnumerator AttackProjectile()
     {
         isAttacking = true;
         rb.linearVelocity = Vector2.zero;
         animator.SetBool("isMoving", false);
         animator.SetTrigger("Attack1");
-        Debug.Log("Boss: Ataque 1 (Proj�til)");
+        Debug.Log("Boss: Ataque 1 (Projétil)");
 
         yield return new WaitForSeconds(0.5f);
 
         GameObject proj = Instantiate(projectilePrefab, projectileFirePoint.position, Quaternion.identity);
-        proj.GetComponent<BossControlDebuff>().SetDirection((playerTarget.position - projectileFirePoint.position).normalized);
+
+        // Assumindo que BossControlDebuff.cs tem o método SetDirection
+        BossControlDebuff debuffControl = proj.GetComponent<BossControlDebuff>();
+        if (debuffControl != null)
+        {
+            debuffControl.SetDirection((playerTarget.position - projectileFirePoint.position).normalized);
+        }
+        else
+        {
+            Debug.LogError("Projectile prefab não tem BossControlDebuff anexado!");
+        }
 
         yield return new WaitForSeconds(1f);
         isAttacking = false;
@@ -186,6 +283,39 @@ public class BossJulgador : MonoBehaviour
         meleeHitbox.SetActive(false);
 
         yield return new WaitForSeconds(1f);
+        isAttacking = false;
+    }
+
+    // NOVO: Rotina de Ataque de Teleporte
+    IEnumerator AttackTeleport()
+    {
+        isAttacking = true;
+        rb.linearVelocity = Vector2.zero;
+        animator.SetBool("isMoving", false);
+        Debug.Log("Boss: INICIANDO TELEPORTE!");
+
+        // Animação/Aviso antes do teleporte
+        animator.SetTrigger("TeleportCharge");
+        yield return new WaitForSeconds(teleportChargeTime);
+
+        // Lógica de Teleporte
+        Vector2 randomDirection = Random.insideUnitCircle.normalized;
+        Vector2 targetPosition = (Vector2)playerTarget.position + randomDirection * teleportMaxDistance;
+
+        // Garante que a posição de teleporte não é muito perto do jogador (opcional)
+        if (Vector2.Distance(targetPosition, (Vector2)playerTarget.position) < 5f)
+        {
+            targetPosition = (Vector2)playerTarget.position + randomDirection * (teleportMaxDistance * 0.5f);
+        }
+
+        transform.position = targetPosition;
+
+        Debug.Log($"Boss Teleportado para: {targetPosition}");
+
+        // Animação de chegada (opcional)
+        animator.SetTrigger("TeleportFinish");
+
+        yield return new WaitForSeconds(0.5f);
         isAttacking = false;
     }
 }

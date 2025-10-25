@@ -377,13 +377,16 @@ MonoBehaviour:
   - {fileID: 0}
   enemiesPerWave: 3
   totalWaves: 2
-  beamHazardPrefab: {fileID: 0}
+  beamHazardPrefab: {fileID: 6514054648938891286, guid: cb3c584c7f8b0a04fa27daad4ee0654c, type: 3}
   beamSpawnRate: 10
   moveSpeed: 6
   projectilePrefab: {fileID: 182311083848641816, guid: f730d00bcbf3d154c9ed162d464a7ac3, type: 3}
-  meleeHitbox: {fileID: 0}
+  meleeHitbox: {fileID: 4831302863871683271}
   projectileFirePoint: {fileID: 5793234860910077653}
   attackCooldown: 3
+  phase3HealthThreshold: 250
+  teleportCooldown: 8
+  teleportMaxDistance: 15
 --- !u!114 &-619467365466756912
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -67,6 +67,11 @@ public class BossHealth : MonoBehaviour
         }
     }
 
+    public int GetCurrentHealth()
+    {
+        return currentHealth;
+    }
+
     private void Die()
     {
         isDead = true;

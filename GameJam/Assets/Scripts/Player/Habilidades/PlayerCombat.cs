@@ -4,10 +4,30 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class PlayerCombat : MonoBehaviour
 {
+    // ENUM PÚBLICO: Define as opções de habilidades para o item coletável.
+    public enum AbilityType
+    {
+        TripodeMarciano,
+        GeradorGalvanico,
+        MantoDeNVOA,
+        RelogioDoChapeleiro
+    }
+
     private PlayerMovement playerMovement;
     private Animator animator;
     private AudioSource audioSource;
     private Camera mainCamera;
+
+    [Header("Unlocks de Habilidades")]
+    // Estes booleans controlam se a habilidade pode ser usada
+    public bool isTripodeMarcianoUnlocked = false;
+    public bool isGeradorGalvanicoUnlocked = false;
+    public bool isMantoDeNVOAUnlocked = false;
+    public bool isRelogioDoChapeleiroUnlocked = false;
+
+    // SLOTS DE HABILIDADE: Limite de slots (2)
+    public int maxAbilitySlots = 2;
+    private int currentAbilityCount = 0; // Contador de habilidades ativas
 
     [Header("Combo")]
     public int comboStep = 0;
@@ -52,6 +72,12 @@ public class PlayerCombat : MonoBehaviour
         hitboxRight.SetActive(false);
         geradorGalvanicoArea.SetActive(false);
 
+        // ATUALIZA A CONTAGEM INICIAL DE SLOTS (caso alguma bool comece TRUE)
+        if (isTripodeMarcianoUnlocked) currentAbilityCount++;
+        if (isGeradorGalvanicoUnlocked) currentAbilityCount++;
+        if (isMantoDeNVOAUnlocked) currentAbilityCount++;
+        if (isRelogioDoChapeleiroUnlocked) currentAbilityCount++;
+
         Debug.Log("PlayerCombat Iniciado!");
     }
 
@@ -67,33 +93,107 @@ public class PlayerCombat : MonoBehaviour
             Attack();
         }
 
+        // CHECAGEM DE UNLOCK: Alpha1 (Trípode Marciano)
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            Habilidade_TripodeMarciano();
+            if (isTripodeMarcianoUnlocked) Habilidade_TripodeMarciano();
+            else Debug.Log("Habilidade 'Trípode Marciano' está bloqueada!");
         }
 
+        // CHECAGEM DE UNLOCK: Alpha2 (Gerador Galvânico)
         if (Input.GetKey(KeyCode.Alpha2))
         {
-            Habilidade_GeradorGalvanico(true);
+            if (isGeradorGalvanicoUnlocked) Habilidade_GeradorGalvanico(true);
+            else if (Input.GetKeyDown(KeyCode.Alpha2)) Debug.Log("Habilidade 'Gerador Galvânico' está bloqueada!");
         }
         if (Input.GetKeyUp(KeyCode.Alpha2))
         {
-            Habilidade_GeradorGalvanico(false);
+            if (isGeradorGalvanicoUnlocked) Habilidade_GeradorGalvanico(false);
         }
 
+        // CHECAGEM DE UNLOCK: Alpha3 (Manto de Névoa)
         if (Input.GetKeyDown(KeyCode.Alpha3) && !isMantoAtivo)
         {
-            StartCoroutine(Habilidade_MantoDeNVOA());
+            if (isMantoDeNVOAUnlocked) StartCoroutine(Habilidade_MantoDeNVOA());
+            else Debug.Log("Habilidade 'Manto de Névoa' está bloqueada!");
         }
 
+        // CHECAGEM DE UNLOCK: Alpha4 (Relógio do Chapeleiro)
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            Habilidade_RelogioDoChapeleiro();
+            if (isRelogioDoChapeleiroUnlocked) Habilidade_RelogioDoChapeleiro();
+            else Debug.Log("Habilidade 'Relógio do Chapeleiro' está bloqueada!");
+        }
+    }
+
+    // NOVO: Único setter público que o item de desbloqueio chamará
+    // Retorna TRUE se a habilidade foi desbloqueada/já estava, FALSE se o slot estava cheio.
+    public bool UnlockAbility(AbilityType type)
+    {
+        // 1. CHECA SE A HABILIDADE JÁ ESTÁ DESBLOQUEADA
+        if (IsAlreadyUnlocked(type))
+        {
+            Debug.LogWarning($"Habilidade '{type}' já está desbloqueada. Não consumiu slot.");
+            return true;
+        }
+
+        // 2. CHECA SE HÁ SLOT DISPONÍVEL
+        if (currentAbilityCount >= maxAbilitySlots)
+        {
+            Debug.LogWarning($"Não foi possível desbloquear '{type}'. Slots de habilidade cheios ({currentAbilityCount}/{maxAbilitySlots}).");
+            return false;
+        }
+
+        // 3. DESBLOQUEIA E INCREMENTA O CONTADOR
+        currentAbilityCount++;
+
+        switch (type)
+        {
+            case AbilityType.TripodeMarciano:
+                isTripodeMarcianoUnlocked = true;
+                break;
+            case AbilityType.GeradorGalvanico:
+                isGeradorGalvanicoUnlocked = true;
+                // Garante que a área do Gerador Galvânico esteja desativada ao desbloquear
+                if (geradorGalvanicoArea.activeSelf) Habilidade_GeradorGalvanico(false);
+                break;
+            case AbilityType.MantoDeNVOA:
+                isMantoDeNVOAUnlocked = true;
+                break;
+            case AbilityType.RelogioDoChapeleiro:
+                isRelogioDoChapeleiroUnlocked = true;
+                break;
+        }
+
+        Debug.Log($"Habilidade '{type}' desbloqueada! Slots ocupados: {currentAbilityCount}/{maxAbilitySlots}");
+        return true;
+    }
+
+    // NOVO: Método de ajuda para checar se já está desbloqueada
+    private bool IsAlreadyUnlocked(AbilityType type)
+    {
+        switch (type)
+        {
+            case AbilityType.TripodeMarciano:
+                return isTripodeMarcianoUnlocked;
+            case AbilityType.GeradorGalvanico:
+                return isGeradorGalvanicoUnlocked;
+            case AbilityType.MantoDeNVOA:
+                return isMantoDeNVOAUnlocked;
+            case AbilityType.RelogioDoChapeleiro:
+                return isRelogioDoChapeleiroUnlocked;
+            default:
+                return false;
         }
     }
 
     private void Attack()
     {
+        if (Time.time - lastAttackTime > comboTimeWindow)
+        {
+            comboStep = 0;
+        }
+
         if (comboStep == 0)
         {
             comboStep = 1;
