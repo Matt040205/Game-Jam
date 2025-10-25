@@ -1,0 +1,123 @@
+using System.Collections;
+using UnityEngine;
+using UnityEngine.Events;
+
+public class PlayerHealth : MonoBehaviour
+{
+    [Header("Health Stats")]
+    public int maxHealth = 100;
+    private int currentHealth;
+
+    [Header("Knockback Settings")]
+    public float knockbackForce = 7f;
+    public float knockbackDuration = 0.2f;
+
+    [Header("Events")]
+    public UnityEvent<int, int> OnHealthChanged;
+
+    private Rigidbody2D rb;
+    private PlayerCombat playerCombat;
+    private PlayerMovement playerMovement;
+    private Animator animator;
+
+    private bool isAlive = true;
+    private bool isGettingKnockedBack = false;
+
+    void Start()
+    {
+        currentHealth = maxHealth;
+        isAlive = true;
+
+        rb = GetComponent<Rigidbody2D>();
+        playerCombat = GetComponent<PlayerCombat>();
+        playerMovement = GetComponent<PlayerMovement>();
+        animator = GetComponent<Animator>();
+
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+
+        Debug.Log($"Vida inicial do Player: {currentHealth}/{maxHealth}");
+    }
+
+    public void TakeDamage(int damage, Vector2 damageSourcePosition)
+    {
+        if (!isAlive || isGettingKnockedBack)
+        {
+            Debug.LogWarning("Player tomou dano mas est� imune (morreu ou knockback).");
+            return;
+        }
+
+        currentHealth -= damage;
+        currentHealth = Mathf.Max(currentHealth, 0);
+
+        Debug.Log($"Player tomou {damage} de dano. Vida restante: {currentHealth}");
+
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+
+        Vector2 knockbackDirection = ((Vector2)transform.position - damageSourcePosition).normalized;
+
+        if (knockbackDirection == Vector2.zero)
+        {
+            knockbackDirection = -playerMovement.GetLastMoveDirection();
+        }
+
+        playerCombat?.PlayHurtAnimation(knockbackDirection);
+
+        StartCoroutine(ApplyKnockback(knockbackDirection));
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    private IEnumerator ApplyKnockback(Vector2 direction)
+    {
+        isGettingKnockedBack = true;
+        Debug.Log("Player Knockback INICIO");
+
+        if (playerMovement != null)
+        {
+            playerMovement.enabled = false;
+        }
+
+        rb.linearVelocity = Vector2.zero;
+        rb.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
+
+        yield return new WaitForSeconds(knockbackDuration);
+
+        Debug.Log("Player Knockback FIM");
+        rb.linearVelocity = Vector2.zero;
+
+        if (playerMovement != null && isAlive)
+        {
+            playerMovement.enabled = true;
+        }
+
+        isGettingKnockedBack = false;
+    }
+
+    private void Die()
+    {
+        if (!isAlive) return;
+
+        isAlive = false;
+        Debug.Log("Player Morreu!");
+
+        if (animator != null)
+        {
+            animator.SetTrigger("Die");
+        }
+
+        if (playerMovement != null) playerMovement.enabled = false;
+        if (playerCombat != null) playerCombat.enabled = false;
+
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.bodyType = RigidbodyType2D.Kinematic;
+        }
+
+        float deathAnimationTime = 2f;
+        Destroy(gameObject, deathAnimationTime);
+    }
+}
