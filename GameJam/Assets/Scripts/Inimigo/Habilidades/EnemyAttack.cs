@@ -1,12 +1,18 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class EnemyAttack : MonoBehaviour
 {
     [Header("Attack Settings")]
     public float attackChargeTime = 1.0f;
     public float attackCooldown = 2.0f;
     public int damageAmount = 15;
+
+    [Header("Audio")]
+    public AudioClip chargeSound;
+    public AudioClip attackSound;
+    private AudioSource audioSource;
 
     private PlayerHealth playerHealth;
     private EnemyMovement enemyMovement;
@@ -19,6 +25,7 @@ public class EnemyAttack : MonoBehaviour
     {
         enemyMovement = GetComponent<EnemyMovement>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -35,14 +42,21 @@ public class EnemyAttack : MonoBehaviour
         if (enemyMovement != null) enemyMovement.canMove = false;
 
         Debug.Log("Inimigo está a 'carregar' o ataque...");
+        if (chargeSound != null)
+        {
+            audioSource.PlayOneShot(chargeSound);
+        }
         if (animator != null) animator.SetTrigger("ChargeAttack");
 
         yield return new WaitForSeconds(attackChargeTime);
 
         if (playerIsInRange && playerHealth != null)
-            
         {
             Debug.Log("Inimigo ATACA!");
+            if (attackSound != null)
+            {
+                audioSource.PlayOneShot(attackSound);
+            }
             playerHealth.TakeDamage(damageAmount, transform.position);
 
             if (animator != null) animator.SetTrigger("Attack");
@@ -74,7 +88,7 @@ public class EnemyAttack : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player SAIU na área de ataque.");
+            Debug.Log("Player SAIU da área de ataque.");
             playerIsInRange = false;
             playerHealth = null;
         }

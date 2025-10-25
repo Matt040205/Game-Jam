@@ -1,35 +1,50 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class PlayerCombat : MonoBehaviour
 {
     private PlayerMovement playerMovement;
     private Animator animator;
+    private AudioSource audioSource;
+    private Camera mainCamera;
 
+    [Header("Combo")]
     public int comboStep = 0;
     public float comboTimeWindow = 0.5f;
     private float lastAttackTime = 0f;
 
+    [Header("Hitboxes")]
     public GameObject hitboxUp;
     public GameObject hitboxDown;
     public GameObject hitboxLeft;
     public GameObject hitboxRight;
 
+    [Header("Habilidades")]
     public GameObject projetilLaserPrefab;
     public GameObject geradorGalvanicoArea;
     public GameObject relogioChapeleiroAreaPrefab;
     public Transform pontoDeDisparo;
 
+    [Header("Manto")]
     private bool isMantoAtivo = false;
     public float mantoDuracao = 3f;
-
     private SpriteRenderer spriteRenderer;
+
+    [Header("Audio")]
+    public AudioClip[] attackSounds;
+    public AudioClip laserSound;
+    public AudioSource galvanicAudioSource;
+    public AudioClip mantoSound;
+    public AudioClip relogioSound;
 
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        mainCamera = Camera.main;
 
         hitboxUp.SetActive(false);
         hitboxDown.SetActive(false);
@@ -96,10 +111,18 @@ public class PlayerCombat : MonoBehaviour
 
         Debug.Log($"Ataque! Passo do combo: {comboStep}");
 
+        if (attackSounds.Length >= comboStep && attackSounds[comboStep - 1] != null)
+        {
+            audioSource.PlayOneShot(attackSounds[comboStep - 1]);
+        }
+
         animator.SetTrigger("Attack");
         animator.SetInteger("ComboStep", comboStep);
 
-        StartCoroutine(ActivateHitbox(playerMovement.GetLastMoveDirection()));
+        Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 attackDirection = (mousePosition - (Vector2)transform.position).normalized;
+
+        StartCoroutine(ActivateHitbox(attackDirection));
     }
 
     private IEnumerator ActivateHitbox(Vector2 direction)
@@ -125,13 +148,21 @@ public class PlayerCombat : MonoBehaviour
     {
         Debug.Log("HABILIDADE: Trípode Marciano (Disparando Laser)");
 
+        if (laserSound != null)
+        {
+            audioSource.PlayOneShot(laserSound);
+        }
+
+        Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 shootDirection = (mousePosition - (Vector2)pontoDeDisparo.position).normalized;
+
         GameObject laserObj = Instantiate(projetilLaserPrefab, pontoDeDisparo.position, Quaternion.identity);
 
         LaserProjectile projectile = laserObj.GetComponent<LaserProjectile>();
 
         if (projectile != null)
         {
-            projectile.SetDirection(playerMovement.GetLastMoveDirection());
+            projectile.SetDirection(shootDirection);
         }
     }
 
@@ -142,10 +173,12 @@ public class PlayerCombat : MonoBehaviour
         if (isActive)
         {
             Debug.Log("HABILIDADE: Gerador Galvânico (ATIVADO)");
+            if (galvanicAudioSource != null) galvanicAudioSource.Play();
         }
         else
         {
             Debug.Log("HABILIDADE: Gerador Galvânico (DESATIVADO)");
+            if (galvanicAudioSource != null) galvanicAudioSource.Stop();
         }
 
         geradorGalvanicoArea.SetActive(isActive);
@@ -156,6 +189,10 @@ public class PlayerCombat : MonoBehaviour
         isMantoAtivo = true;
 
         Debug.Log("HABILIDADE: Manto de Névoa (ATIVADO - Invisível e Vulnerável)");
+        if (mantoSound != null)
+        {
+            audioSource.PlayOneShot(mantoSound);
+        }
 
         Color tempColor = spriteRenderer.color;
         tempColor.a = 0.5f;
@@ -173,6 +210,10 @@ public class PlayerCombat : MonoBehaviour
     void Habilidade_RelogioDoChapeleiro()
     {
         Debug.Log("HABILIDADE: Relógio do Chapeleiro (Criando área de lentidão)");
+        if (relogioSound != null)
+        {
+            audioSource.PlayOneShot(relogioSound);
+        }
 
         Instantiate(relogioChapeleiroAreaPrefab, transform.position, Quaternion.identity);
     }

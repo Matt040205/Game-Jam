@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class LaserProjectile : MonoBehaviour
+public class EnemyProjectile : MonoBehaviour
 {
-    public float moveSpeed = 15f;
-    public float lifeTime = 2.0f;
+    public float moveSpeed = 10f;
+    public float lifeTime = 3.0f;
     public int damageAmount = 10;
 
     [Header("Audio")]
@@ -36,19 +36,14 @@ public class LaserProjectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Player"))
         {
-            Debug.Log("Projétil acertou o Inimigo!");
+            Debug.Log("Proj�til Inimigo acertou o Player!");
 
-            EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
-            if (enemyHealth != null)
+            PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
             {
-                Debug.Log($"Tentando causar {damageAmount} de dano (Laser)...");
-                enemyHealth.TakeDamage(damageAmount);
-            }
-            else
-            {
-                Debug.LogWarning("Projétil tocou em 'Enemy' mas não encontrou o script EnemyHealth.");
+                playerHealth.TakeDamage(damageAmount, transform.position);
             }
 
             if (hitSound != null)

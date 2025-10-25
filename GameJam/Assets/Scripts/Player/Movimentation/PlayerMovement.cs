@@ -1,12 +1,17 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float dashSpeed = 20f;
     public float dashDuration = 0.2f;
     public float dashCooldown = 1f;
+
+    [Header("Audio")]
+    public AudioClip dashSound;
+    private AudioSource audioSource;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -20,11 +25,14 @@ public class PlayerMovement : MonoBehaviour
     private bool canDash = true;
     private bool canMove = true;
 
+    public bool invertControls = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
         lastMoveDirection = Vector2.down;
     }
 
@@ -32,10 +40,16 @@ public class PlayerMovement : MonoBehaviour
     {
         if (canMove)
         {
-            float moveX = Input.GetAxisRaw("Horizontal");
-            float moveY = Input.GetAxisRaw("Vertical");
+            float inputX = Input.GetAxisRaw("Horizontal");
+            float inputY = Input.GetAxisRaw("Vertical");
 
-            moveDirection = new Vector2(moveX, moveY).normalized;
+            if (invertControls)
+            {
+                inputX *= -1;
+                inputY *= -1;
+            }
+
+            moveDirection = new Vector2(inputX, inputY).normalized;
             isMoving = moveDirection.magnitude > 0.1f;
 
             if (isMoving)
@@ -111,6 +125,11 @@ public class PlayerMovement : MonoBehaviour
         }
 
         lastMoveDirection = dashDirection;
+
+        if (dashSound != null)
+        {
+            audioSource.PlayOneShot(dashSound);
+        }
 
         animator.SetTrigger("Dash");
 
