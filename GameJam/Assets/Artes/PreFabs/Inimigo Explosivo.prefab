@@ -244,6 +244,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo Explosivo
       objectReference: {fileID: 0}
+    - target: {fileID: 6858569376986600755, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8710716144519980676, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 4

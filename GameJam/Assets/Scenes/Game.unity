@@ -14013,6 +14013,10 @@ PrefabInstance:
       propertyPath: staminaBarImage
       value: 
       objectReference: {fileID: 1567060319}
+    - target: {fileID: 4550349250874893477, guid: 883ae964dfd8b9c4286bea9a5e194cef, type: 3}
+      propertyPath: orbitDistance
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4578159054450674188, guid: 883ae964dfd8b9c4286bea9a5e194cef, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.37
@@ -14060,6 +14064,18 @@ PrefabInstance:
     - target: {fileID: 6323292917480495472, guid: 883ae964dfd8b9c4286bea9a5e194cef, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390177400622413319, guid: 883ae964dfd8b9c4286bea9a5e194cef, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.06188029
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390177400622413319, guid: 883ae964dfd8b9c4286bea9a5e194cef, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.06188029
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390177400622413319, guid: 883ae964dfd8b9c4286bea9a5e194cef, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6188029
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

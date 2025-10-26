@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -7557125434853531667}
   - component: {fileID: 147214701119471665}
   - component: {fileID: 773284930977773792}
+  - component: {fileID: -2062911255512736267}
   m_Layer: 0
   m_Name: Explosion
   m_TagString: Untagged
@@ -140,3 +141,25 @@ MonoBehaviour:
   damage: 40
   explosionDuration: 1.5
   explosionSoundEvent: 
+--- !u!95 &-2062911255512736267
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3307332359599546563}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 41e15424981722047b96ad4b91f6eda2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
