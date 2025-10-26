@@ -16,30 +16,52 @@ public class BossHealth : MonoBehaviour
     private BossJulgador bossController;
     private bool isDead = false;
 
+    // --- CORREÇÃO: Ouve o evento ---
+    void OnEnable()
+    {
+        GlobalDamageEvents.OnEnemyTakeDamage += OnDamageReceived;
+        Debug.Log("[BossHealth] OnEnable - Assinando evento OnEnemyTakeDamage.");
+        // Garante que a vida seja resetada se o Boss for reutilizado (opcional)
+        // if (isDead) { currentHealth = maxHealth; isDead = false; }
+    }
+
+    void OnDisable()
+    {
+        GlobalDamageEvents.OnEnemyTakeDamage -= OnDamageReceived;
+        Debug.Log("[BossHealth] OnDisable - Cancelando assinatura do evento OnEnemyTakeDamage.");
+    }
+    // --- FIM CORREÇÃO ---
+
     void Start()
     {
         currentHealth = maxHealth;
         audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         bossController = GetComponent<BossJulgador>();
+        Debug.Log($"[BossHealth] Start. Vida: {currentHealth}/{maxHealth}");
     }
 
-    public int GetCurrentHealth()
+    public int GetCurrentHealth() { return currentHealth; }
+
+    // --- CORREÇÃO: Função chamada pelo evento ---
+    private void OnDamageReceived(GameObject target, int damage)
     {
-        return currentHealth;
+        if (target != gameObject || !this.enabled) return; // Garante que é para este Boss e que está ativo (Fase 2+)
+        Debug.Log($"[BossHealth] Evento OnEnemyTakeDamage recebido! Dano: {damage}");
+        InternalTakeDamage(damage);
     }
+    // --- FIM CORREÇÃO ---
 
-    public void TakeDamage(int damage)
+    // Função privada que aplica o dano (chamada pelo OnDamageReceived)
+    private void InternalTakeDamage(int damage)
     {
         if (isDead) return;
 
         currentHealth -= damage;
-        Debug.Log($"Boss tomou {damage} de dano. Vida restante: {currentHealth}");
+        currentHealth = Mathf.Max(currentHealth, 0); // Garante que não fique negativo
+        Debug.Log($"[BossHealth] VIDA ATUAL: {currentHealth}. Tomou {damage} de dano.");
 
-        if (hurtSound != null)
-        {
-            audioSource.PlayOneShot(hurtSound);
-        }
+        if (hurtSound != null) audioSource.PlayOneShot(hurtSound);
 
         if (currentHealth <= 0)
         {
@@ -47,49 +69,26 @@ public class BossHealth : MonoBehaviour
         }
         else
         {
-            if (animator != null)
-            {
-                animator.SetTrigger("Hurt");
-            }
+            if (animator != null) animator.SetTrigger("Hurt");
         }
     }
 
     private void Die()
     {
+        if (isDead) return;
         isDead = true;
-        Debug.Log("Boss MORREU!");
+        Debug.Log("[BossHealth] Boss MORREU!");
 
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.ganhou = true;
-            Debug.Log("GameManager: Estado de Vitória REGISTRADO.");
-        }
-
-        bossController.enabled = false;
-
-        if (deathSound != null)
-        {
-            audioSource.PlayOneShot(deathSound);
-        }
-        if (animator != null)
-        {
-            animator.SetTrigger("Die");
-        }
-
-        GetComponent<Collider2D>().enabled = false;
-
-        float deathAnimationTime = 5f;
-
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.LoadFinalSceneDelayed(deathAnimationTime);
-        }
-
-        Destroy(gameObject);
-    }
-
-    private void OnDestroy()
-    {
+        // --- CORREÇÃO: Carrega cena "FinalBom" diretamente ---
         SceneManager.LoadScene("FinalBom");
+        // --- FIM CORREÇÃO ---
+
+        if (bossController != null) bossController.enabled = false;
+        if (deathSound != null) audioSource.PlayOneShot(deathSound);
+        if (animator != null) animator.SetTrigger("Die");
+        if (GetComponent<Collider2D>() != null) GetComponent<Collider2D>().enabled = false;
+
+        // Não precisa mais do GameManager para carregar a cena aqui
+        // Destroy(gameObject, deathAnimationTime); // O carregamento da cena já destrói
     }
 }

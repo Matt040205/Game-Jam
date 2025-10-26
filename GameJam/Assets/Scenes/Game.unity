@@ -11898,7 +11898,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -11976,7 +11976,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -12133,7 +12133,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -12211,7 +12211,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -12252,11 +12252,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4578159054450674188, guid: 883ae964dfd8b9c4286bea9a5e194cef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.29
+      value: 29.75
       objectReference: {fileID: 0}
     - target: {fileID: 4578159054450674188, guid: 883ae964dfd8b9c4286bea9a5e194cef, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.74
+      value: 3.97
       objectReference: {fileID: 0}
     - target: {fileID: 4578159054450674188, guid: 883ae964dfd8b9c4286bea9a5e194cef, type: 3}
       propertyPath: m_LocalPosition.z

@@ -15,6 +15,7 @@ public class LaserProjectile : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        if (rb != null) rb.freezeRotation = true;
         Destroy(gameObject, lifeTime);
     }
 
@@ -25,38 +26,33 @@ public class LaserProjectile : MonoBehaviour
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
-
     void FixedUpdate()
     {
         if (rb != null && moveDirection != Vector2.zero)
         {
-            rb.linearVelocity = moveDirection * moveSpeed;
+            rb.linearVelocity = moveDirection * moveSpeed; // Corrigido para velocity
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log($"[LaserProjectile] Trigger Enter com: {other.name}");
+
         if (other.CompareTag("Enemy"))
         {
-            Debug.Log("Projétil acertou o Inimigo!");
+            Debug.Log("[LaserProjectile] Acertou o INIMIGO!");
 
-            // CÓDIGO ANTIGO: EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
-            // CÓDIGO ANTIGO: if (enemyHealth != null) { ... enemyHealth.TakeDamage(damageAmount); }
-
-            // NOVO: Dispara o evento de dano (Substitui o GetComponent)
+            // --- CORREÇÃO: Sempre dispara o evento OnEnemyTakeDamage ---
             GlobalDamageEvents.FireEnemyDamage(other.gameObject, damageAmount);
+            Debug.Log($"[LaserProjectile] Evento FireEnemyDamage disparado para {other.name}.");
+            // --- FIM CORREÇÃO ---
 
-            Debug.Log($"Tentando causar {damageAmount} de dano (Laser)... (Via Evento)");
-
-            if (hitSound != null)
-            {
-                AudioSource.PlayClipAtPoint(hitSound, transform.position);
-            }
+            if (hitSound != null) AudioSource.PlayClipAtPoint(hitSound, transform.position);
             Destroy(gameObject);
         }
-
-        if (other.CompareTag("Wall"))
+        else if (other.CompareTag("Wall"))
         {
+            Debug.Log("[LaserProjectile] Acertou a Parede.");
             Destroy(gameObject);
         }
     }

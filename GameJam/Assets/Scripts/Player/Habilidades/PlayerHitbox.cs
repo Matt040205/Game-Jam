@@ -6,17 +6,20 @@ public class PlayerHitbox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log($"[PlayerHitbox] Trigger Enter com: {other.name} (Tag: {other.tag})");
+
         if (other.CompareTag("Enemy"))
         {
-            Debug.Log($"Hitbox do Player tocou em: {other.name}");
+            Debug.Log($"[PlayerHitbox] Hitbox tocou em INIMIGO: {other.name}");
 
-            // CÓDIGO ANTIGO: EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
-            // CÓDIGO ANTIGO: if (enemyHealth != null) { ... enemyHealth.TakeDamage(damage); }
-
-            // NOVO: Dispara o evento de dano (Substitui o GetComponent)
+            // --- CORREÇÃO: Sempre dispara o evento OnEnemyTakeDamage ---
             GlobalDamageEvents.FireEnemyDamage(other.gameObject, damage);
-
-            Debug.Log($"Tentando causar {damage} de dano ao inimigo. (Via Evento)");
+            Debug.Log($"[PlayerHitbox] Evento FireEnemyDamage disparado para {other.name}.");
+            // --- FIM CORREÇÃO ---
+        }
+        else
+        {
+            Debug.Log($"[PlayerHitbox] Colidiu com objeto sem tag 'Enemy'.");
         }
     }
 }

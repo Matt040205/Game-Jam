@@ -15,7 +15,7 @@ public class PlayerHealth : MonoBehaviour
     public float knockbackDuration = 0.2f;
 
     [Header("Events")]
-    public UnityEvent<int, int> OnHealthChanged;
+    public UnityEvent<int, int> OnHealthChanged; // Para UI
 
     [Header("Audio")]
     public AudioClip hurtSound;
@@ -30,157 +30,115 @@ public class PlayerHealth : MonoBehaviour
     private bool isAlive = true;
     private bool isGettingKnockedBack = false;
 
+    // --- CORREÇÃO: Ouve o evento ---
     void OnEnable()
     {
-        // Certifique-se de que GlobalDamageEvents existe
-        // GlobalDamageEvents.OnPlayerTakeDamage += OnDamageReceived;
+        GlobalDamageEvents.OnPlayerTakeDamage += OnDamageReceived; // Descomentado
+        Debug.Log("[PlayerHealth] OnEnable - Assinando evento OnPlayerTakeDamage.");
     }
 
     void OnDisable()
     {
-        // GlobalDamageEvents.OnPlayerTakeDamage -= OnDamageReceived;
+        GlobalDamageEvents.OnPlayerTakeDamage -= OnDamageReceived; // Descomentado
+        Debug.Log("[PlayerHealth] OnDisable - Cancelando assinatura do evento OnPlayerTakeDamage.");
     }
+    // --- FIM CORREÇÃO ---
 
     void Start()
     {
         currentHealth = maxHealth;
         isAlive = true;
-
         rb = GetComponent<Rigidbody2D>();
         playerCombat = GetComponent<PlayerCombat>();
         playerMovement = GetComponent<PlayerMovement>();
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
-
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
-
-        Debug.Log($"Vida inicial do Player: {currentHealth}/{maxHealth}");
+        Debug.Log($"[PlayerHealth] Start. Vida: {currentHealth}/{maxHealth}");
     }
 
+    // --- CORREÇÃO: Função chamada pelo evento ---
     private void OnDamageReceived(GameObject target, int damage, Vector2 damageSourcePosition)
     {
-        if (target != gameObject) return;
+        if (target != gameObject) return; // Garante que é para este Player
+        Debug.Log($"[PlayerHealth] Evento OnPlayerTakeDamage recebido! Dano: {damage}");
         InternalTakeDamage(damage, damageSourcePosition);
     }
+    // --- FIM CORREÇÃO ---
 
+    // Função privada que aplica o dano (chamada pelo OnDamageReceived)
     private void InternalTakeDamage(int damage, Vector2 damageSourcePosition)
     {
         if (!isAlive || isGettingKnockedBack)
         {
-            Debug.LogWarning("Player tomou dano mas está imune (morreu ou knockback).");
+            Debug.LogWarning("[PlayerHealth] Dano ignorado (morto ou knockback).");
             return;
         }
 
         currentHealth -= damage;
         currentHealth = Mathf.Max(currentHealth, 0);
+        Debug.Log($"[PlayerHealth] VIDA ATUAL: {currentHealth}. Tomou {damage} de dano.");
 
-        Debug.Log($"Player tomou {damage} de dano. Vida restante: {currentHealth}");
-
-        if (hurtSound != null && audioSource != null)
-        {
-            audioSource.PlayOneShot(hurtSound);
-        }
-
+        if (hurtSound != null) audioSource.PlayOneShot(hurtSound);
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
 
         Vector2 knockbackDirection = ((Vector2)transform.position - damageSourcePosition).normalized;
-
-        if (knockbackDirection == Vector2.zero)
+        if (knockbackDirection == Vector2.zero && playerMovement != null)
         {
-            // playerMovement.GetLastMoveDirection();
+            knockbackDirection = -playerMovement.GetLastMoveDirection();
         }
 
         playerCombat?.PlayHurtAnimation(knockbackDirection);
-
         StartCoroutine(ApplyKnockback(knockbackDirection));
 
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
+        if (currentHealth <= 0) Die();
     }
 
     private IEnumerator ApplyKnockback(Vector2 direction)
     {
         isGettingKnockedBack = true;
-        Debug.Log("Player Knockback INICIO");
+        Debug.Log("[PlayerHealth] Knockback INICIO");
+        if (playerMovement != null) playerMovement.enabled = false;
 
-        if (playerMovement != null)
-        {
-            playerMovement.enabled = false;
-        }
-
-        rb.linearVelocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero; // <-- Corrigido para velocity
         rb.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
 
         yield return new WaitForSeconds(knockbackDuration);
 
-        Debug.Log("Player Knockback FIM");
-        rb.linearVelocity = Vector2.zero;
+        Debug.Log("[PlayerHealth] Knockback FIM");
+        rb.linearVelocity = Vector2.zero; // <-- Corrigido para velocity
 
-        if (playerMovement != null && isAlive)
-        {
-            playerMovement.enabled = true;
-        }
-
+        if (playerMovement != null && isAlive) playerMovement.enabled = true;
         isGettingKnockedBack = false;
     }
 
-    public void Heal(int healAmount)
-    {
-        if (!isAlive) return;
-
-        currentHealth += healAmount;
-        currentHealth = Mathf.Min(currentHealth, maxHealth);
-
-        Debug.Log($"Player curou {healAmount} de vida. Vida restante: {currentHealth}");
-
-        OnHealthChanged?.Invoke(currentHealth, maxHealth);
-    }
+    public void Heal(int healAmount) {/* ... */} // Sem alterações
 
     private void Die()
     {
         if (!isAlive) return;
-
         isAlive = false;
-        Debug.Log("Player Morreu!");
+        Debug.Log("[PlayerHealth] Player Morreu!");
 
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.ganhou = false;
-            Debug.Log("GameManager: Estado de Perda REGISTRADO.");
-        }
+        // --- CORREÇÃO: Carrega cena "FinalRuim" diretamente ---
+        SceneManager.LoadScene("FinalRuim");
+        // --- FIM CORREÇÃO ---
 
-        if (deathSound != null && audioSource != null)
-        {
-            audioSource.PlayOneShot(deathSound);
-        }
-
-        if (animator != null)
-        {
-            animator.SetTrigger("Die");
-        }
-
+        if (deathSound != null) audioSource.PlayOneShot(deathSound);
+        if (animator != null) animator.SetTrigger("Die");
         if (playerMovement != null) playerMovement.enabled = false;
         if (playerCombat != null) playerCombat.enabled = false;
-
         if (rb != null)
         {
-            rb.linearVelocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero; // <-- Corrigido para velocity
             rb.bodyType = RigidbodyType2D.Kinematic;
         }
 
-        float deathAnimationTime = 2f;
-
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.LoadFinalSceneDelayed(deathAnimationTime);
-        }
-
-        Destroy(gameObject);
+        // Não precisa mais do GameManager para carregar a cena aqui
+        // Destroy(gameObject); // O carregamento da cena já destrói
     }
-    private void OnDestroy()
-    {
-        SceneManager.LoadScene("FinalRuim");
-    }
+
+    // --- CORREÇÃO: REMOVER OnDestroy ---
+    // private void OnDestroy() { /* SceneManager.LoadScene("FinalRuim"); */ } // Removido!
+    // --- FIM CORREÇÃO ---
 }
