@@ -1,0 +1,2275 @@
+fileFormatVersion: 2
+guid: adde6caf97d01b944b583a5486ace0e0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1653627738994154631
+    second: raios_0
+  - first:
+      213: 3092113162983788624
+    second: raios_1
+  - first:
+      213: -477648527492279483
+    second: raios_2
+  - first:
+      213: 5501089310168189989
+    second: raios_3
+  - first:
+      213: -4987922704030391475
+    second: raios_4
+  - first:
+      213: -3188653108373528055
+    second: raios_5
+  - first:
+      213: -9197624223381733762
+    second: raios_6
+  - first:
+      213: 3537427676045665799
+    second: raios_7
+  - first:
+      213: -65919701811790424
+    second: raios_8
+  - first:
+      213: -3088943612947609113
+    second: raios_9
+  - first:
+      213: -1646322763225439613
+    second: raios_10
+  - first:
+      213: 1698409026609599629
+    second: raios_11
+  - first:
+      213: 5820526495351895375
+    second: raios_12
+  - first:
+      213: 3633311550653153036
+    second: raios_13
+  - first:
+      213: -2972830848195299242
+    second: raios_14
+  - first:
+      213: 5141307512478875916
+    second: raios_15
+  - first:
+      213: -4830817276424253656
+    second: raios_16
+  - first:
+      213: 3655894950529466600
+    second: raios_17
+  - first:
+      213: -7186790809766680943
+    second: raios_18
+  - first:
+      213: 5007033147361195118
+    second: raios_19
+  - first:
+      213: 511905193591651871
+    second: raios_20
+  - first:
+      213: -8744889211627775956
+    second: raios_21
+  - first:
+      213: 5421387146606213257
+    second: raios_22
+  - first:
+      213: -2455893039029786917
+    second: raios_23
+  - first:
+      213: 7040814350867527372
+    second: raios_24
+  - first:
+      213: -3198416690781832502
+    second: raios_25
+  - first:
+      213: -1957704421558718006
+    second: raios_26
+  - first:
+      213: 7375383153896391298
+    second: raios_27
+  - first:
+      213: 395951732863574265
+    second: raios_28
+  - first:
+      213: 8139370334841337257
+    second: raios_29
+  - first:
+      213: -3423831392526720910
+    second: raios_30
+  - first:
+      213: -4324844739331677443
+    second: raios_31
+  - first:
+      213: 1344558200468006208
+    second: raios_32
+  - first:
+      213: -2419572680575527686
+    second: raios_33
+  - first:
+      213: 8502014026701097170
+    second: raios_34
+  - first:
+      213: -2398686080869876243
+    second: raios_35
+  - first:
+      213: -8845765656266212273
+    second: raios_36
+  - first:
+      213: -2079143684688622903
+    second: raios_37
+  - first:
+      213: 7992808188826754722
+    second: raios_38
+  - first:
+      213: 6486425326607753883
+    second: raios_39
+  - first:
+      213: 8464285412023958476
+    second: raios_40
+  - first:
+      213: -8389343407474168923
+    second: raios_41
+  - first:
+      213: 5641386614743546122
+    second: raios_42
+  - first:
+      213: -1344152215262741894
+    second: raios_43
+  - first:
+      213: 8507259838603189991
+    second: raios_44
+  - first:
+      213: -2205196865846722435
+    second: raios_45
+  - first:
+      213: 2819301018321771813
+    second: raios_46
+  - first:
+      213: 3295063872822825790
+    second: raios_47
+  - first:
+      213: -4796548513946385665
+    second: raios_48
+  - first:
+      213: -1434105416120724996
+    second: raios_49
+  - first:
+      213: 5507892442301257537
+    second: raios_50
+  - first:
+      213: -7398871023404638825
+    second: raios_51
+  - first:
+      213: -595553610248271915
+    second: raios_52
+  - first:
+      213: -1617588426021868255
+    second: raios_53
+  - first:
+      213: -5536099447839768975
+    second: raios_54
+  - first:
+      213: -1905115171579724901
+    second: raios_55
+  - first:
+      213: -6942235467254905151
+    second: raios_56
+  - first:
+      213: 3304440834394208227
+    second: raios_57
+  - first:
+      213: -3040197137871954438
+    second: raios_58
+  - first:
+      213: 4451756855859239440
+    second: raios_59
+  - first:
+      213: -1820176662851246814
+    second: raios_60
+  - first:
+      213: -4590201714067472164
+    second: raios_61
+  - first:
+      213: 7433115343904628362
+    second: raios_62
+  - first:
+      213: -1845613626754143534
+    second: raios_63
+  - first:
+      213: -3971398430375097192
+    second: raios_64
+  - first:
+      213: 1194657025327048597
+    second: raios_65
+  - first:
+      213: -2157983584724481743
+    second: raios_66
+  - first:
+      213: 3763200799621379577
+    second: raios_67
+  - first:
+      213: -916240042572944588
+    second: raios_68
+  - first:
+      213: -2036028159943241097
+    second: raios_69
+  - first:
+      213: -7580421630920843281
+    second: raios_70
+  - first:
+      213: -598020828826883234
+    second: raios_71
+  - first:
+      213: 7240652860838840672
+    second: raios_72
+  - first:
+      213: -4782163565609169321
+    second: raios_73
+  - first:
+      213: 524033943194336883
+    second: raios_74
+  - first:
+      213: 7130879967323554972
+    second: raios_75
+  - first:
+      213: 3792635689377545755
+    second: raios_76
+  - first:
+      213: -9004348250931676926
+    second: raios_77
+  - first:
+      213: -8328041973104808566
+    second: raios_78
+  - first:
+      213: 1125888800475872280
+    second: raios_79
+  - first:
+      213: -2290042683093626756
+    second: raios_80
+  - first:
+      213: 764611274947454599
+    second: raios_81
+  - first:
+      213: -800740418452518190
+    second: raios_82
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: raios_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 546
+        width: 51
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 973658a25522d09e0800000000000000
+      internalID: -1653627738994154631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 426
+        width: 287
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05055fcf98469ea20800000000000000
+      internalID: 3092113162983788624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_2
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 546
+        width: 30
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5439557e13d0f59f0800000000000000
+      internalID: -477648527492279483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_3
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 546
+        width: 52
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52c0642e49bc75c40800000000000000
+      internalID: 5501089310168189989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_4
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 546
+        width: 30
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d43a9235ab657cab0800000000000000
+      internalID: -4987922704030391475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_5
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 430
+        width: 141
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 902637364e0afb3d0800000000000000
+      internalID: -3188653108373528055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_6
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 430
+        width: 145
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7ebdcbff797b5080800000000000000
+      internalID: -9197624223381733762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_7
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 448
+        width: 141
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7066651bab7771130800000000000000
+      internalID: 3537427676045665799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_8
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 519
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8adfec5616ec51ff0800000000000000
+      internalID: -65919701811790424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_9
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 426
+        width: 20
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e9cb03662ed125d0800000000000000
+      internalID: -3088943612947609113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_10
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 297
+        width: 150
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 382ee406b261729e0800000000000000
+      internalID: -1646322763225439613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_11
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 435
+        width: 17
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d84d16ad206f19710800000000000000
+      internalID: 1698409026609599629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_12
+      rect:
+        serializedVersion: 2
+        x: 676
+        y: 435
+        width: 21
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f45f231520aa6c050800000000000000
+      internalID: 5820526495351895375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 306
+        width: 140
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0f310fea9d1c6230800000000000000
+      internalID: 3633311550653153036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_14
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 297
+        width: 155
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 658fef328126eb6d0800000000000000
+      internalID: -2972830848195299242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_15
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 417
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c01c95a51f7995740800000000000000
+      internalID: 5141307512478875916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_16
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 404
+        width: 25
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82f89e7284d75fcb0800000000000000
+      internalID: -4830817276424253656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_17
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 413
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e0047676195cb230800000000000000
+      internalID: 3655894950529466600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_18
+      rect:
+        serializedVersion: 2
+        x: 573
+        y: 404
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 196a0d4f5d3634c90800000000000000
+      internalID: -7186790809766680943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_19
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 417
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e64f11f7e1e8c7540800000000000000
+      internalID: 5007033147361195118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_20
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 404
+        width: 26
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1e35b6bf07aa1700800000000000000
+      internalID: 511905193591651871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_21
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 413
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c28d7cc2899e3a680800000000000000
+      internalID: -8744889211627775956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_22
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 386
+        width: 12
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 988f457d2e2ac3b40800000000000000
+      internalID: 5421387146606213257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_23
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 323
+        width: 136
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd6664afa4aeaedd0800000000000000
+      internalID: -2455893039029786917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_24
+      rect:
+        serializedVersion: 2
+        x: 573
+        y: 323
+        width: 137
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc67ee8295ff5b160800000000000000
+      internalID: 7040814350867527372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_25
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 332
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: acab44637f0fc93d0800000000000000
+      internalID: -3198416690781832502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_26
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 292
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac1f7c17336d4d4e0800000000000000
+      internalID: -1957704421558718006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_27
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 292
+        width: 21
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 282056ae6ef9a5660800000000000000
+      internalID: 7375383153896391298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_28
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 314
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f0a881d004be7500800000000000000
+      internalID: 395951732863574265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_29
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 288
+        width: 30
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a5f19ff13ad4f070800000000000000
+      internalID: 8139370334841337257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_30
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 314
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2702d9d1d7b1c70d0800000000000000
+      internalID: -3423831392526720910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_31
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 288
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df22b63af901bf3c0800000000000000
+      internalID: -4324844739331677443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_32
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 288
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 045ebbe3f84d8a210800000000000000
+      internalID: 1344558200468006208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_33
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 292
+        width: 21
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af45e0a6773fb6ed0800000000000000
+      internalID: -2419572680575527686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_34
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 301
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d848e036b83df570800000000000000
+      internalID: 8502014026701097170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_35
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 310
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dedb31ed7b726bed0800000000000000
+      internalID: -2398686080869876243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_36
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 288
+        width: 17
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4cf6e3a0078d3580800000000000000
+      internalID: -8845765656266212273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_37
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 292
+        width: 21
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ca4325a5d56523e0800000000000000
+      internalID: -2079143684688622903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_38
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 301
+        width: 19
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ae1ad433b82cee60800000000000000
+      internalID: 7992808188826754722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_39
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 270
+        width: 7
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b926d8ec779640a50800000000000000
+      internalID: 6486425326607753883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_40
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 279
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccb753d8cbe277570800000000000000
+      internalID: 8464285412023958476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_41
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 274
+        width: 17
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5abacba9e90139b80800000000000000
+      internalID: -8389343407474168923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_42
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 274
+        width: 21
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a09be6c9c3b3a4e40800000000000000
+      internalID: 5641386614743546122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_43
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 270
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7ab53d8eac985de0800000000000000
+      internalID: -1344152215262741894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_44
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 279
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7eed3e3ffbbdf0670800000000000000
+      internalID: 8507259838603189991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_45
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 274
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d70c66752219561e0800000000000000
+      internalID: -2205196865846722435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_46
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 274
+        width: 21
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52d57ffb65b202720800000000000000
+      internalID: 2819301018321771813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_47
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 274
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e33d3d3622b6abd20800000000000000
+      internalID: 3295063872822825790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_48
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 279
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff24c4e2a8c3f6db0800000000000000
+      internalID: -4796548513946385665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_49
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 279
+        width: 16
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf119a5e8b8091ce0800000000000000
+      internalID: -1434105416120724996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_50
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 274
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 147dc648ef6ff6c40800000000000000
+      internalID: 5507892442301257537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_51
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 279
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79d190f410ee15990800000000000000
+      internalID: -7398871023404638825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_52
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 283
+        width: 21
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d74378952b2cb7f0800000000000000
+      internalID: -595553610248271915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_53
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 279
+        width: 17
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12dee2a95eb2d89e0800000000000000
+      internalID: -1617588426021868255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_54
+      rect:
+        serializedVersion: 2
+        x: 622
+        y: 283
+        width: 21
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17e364a32e2db23b0800000000000000
+      internalID: -5536099447839768975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_55
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 265
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9b78cd58dbaf85e0800000000000000
+      internalID: -1905115171579724901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_56
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 252
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c64723cf9938af90800000000000000
+      internalID: -6942235467254905151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_57
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 265
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e7bc536e6bbbdd20800000000000000
+      internalID: 3304440834394208227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_58
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 261
+        width: 12
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afd9bfd8fcc0fc5d0800000000000000
+      internalID: -3040197137871954438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_59
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 252
+        width: 6
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01a56e32641d7cd30800000000000000
+      internalID: 4451756855859239440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_60
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 181
+        width: 137
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 225ab4608fe6db6e0800000000000000
+      internalID: -1820176662851246814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_61
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 181
+        width: 136
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd08e996cd35c40c0800000000000000
+      internalID: -4590201714067472164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_62
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 181
+        width: 137
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8ed0ffd50bb72760800000000000000
+      internalID: 7433115343904628362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_63
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 181
+        width: 136
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2dae2b85f201366e0800000000000000
+      internalID: -1845613626754143534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_64
+      rect:
+        serializedVersion: 2
+        x: 573
+        y: 181
+        width: 137
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89cc2ff3b22c2e8c0800000000000000
+      internalID: -3971398430375097192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_65
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 145
+        width: 10
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5972b072c36449010800000000000000
+      internalID: 1194657025327048597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_66
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 141
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1398f59fc5d4d02e0800000000000000
+      internalID: -2157983584724481743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_67
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 141
+        width: 20
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f5f5ef5033993430800000000000000
+      internalID: 3763200799621379577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_68
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 141
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43b6375298cd843f0800000000000000
+      internalID: -916240042572944588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_69
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 145
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77214e50d239eb3e0800000000000000
+      internalID: -2036028159943241097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_70
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 141
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fef964180beecc690800000000000000
+      internalID: -7580421630920843281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_71
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 141
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5b2d71893763b7f0800000000000000
+      internalID: -598020828826883234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_72
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 141
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06907301a67fb7460800000000000000
+      internalID: 7240652860838840672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_73
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 150
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75ecc06f29752adb0800000000000000
+      internalID: -4782163565609169321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_74
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 141
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37e785a481eb54700800000000000000
+      internalID: 524033943194336883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_75
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 141
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c94054c9c89f5f260800000000000000
+      internalID: 7130879967323554972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_76
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 141
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1e31d3b01622a430800000000000000
+      internalID: 3792635689377545755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_77
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 141
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 209be4d09f02a0380800000000000000
+      internalID: -9004348250931676926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_78
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 38
+        width: 137
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8d6b8603f9dc6c80800000000000000
+      internalID: -8328041973104808566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_79
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 3
+        width: 141
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81c74f816e5ff9f00800000000000000
+      internalID: 1125888800475872280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_80
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 3
+        width: 141
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c70d8b910522830e0800000000000000
+      internalID: -2290042683093626756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_81
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 20
+        width: 141
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 786608a47e17c9a00800000000000000
+      internalID: 764611274947454599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raios_82
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 20
+        width: 141
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2da07d8f4d233e4f0800000000000000
+      internalID: -800740418452518190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      raios_0: -1653627738994154631
+      raios_1: 3092113162983788624
+      raios_10: -1646322763225439613
+      raios_11: 1698409026609599629
+      raios_12: 5820526495351895375
+      raios_13: 3633311550653153036
+      raios_14: -2972830848195299242
+      raios_15: 5141307512478875916
+      raios_16: -4830817276424253656
+      raios_17: 3655894950529466600
+      raios_18: -7186790809766680943
+      raios_19: 5007033147361195118
+      raios_2: -477648527492279483
+      raios_20: 511905193591651871
+      raios_21: -8744889211627775956
+      raios_22: 5421387146606213257
+      raios_23: -2455893039029786917
+      raios_24: 7040814350867527372
+      raios_25: -3198416690781832502
+      raios_26: -1957704421558718006
+      raios_27: 7375383153896391298
+      raios_28: 395951732863574265
+      raios_29: 8139370334841337257
+      raios_3: 5501089310168189989
+      raios_30: -3423831392526720910
+      raios_31: -4324844739331677443
+      raios_32: 1344558200468006208
+      raios_33: -2419572680575527686
+      raios_34: 8502014026701097170
+      raios_35: -2398686080869876243
+      raios_36: -8845765656266212273
+      raios_37: -2079143684688622903
+      raios_38: 7992808188826754722
+      raios_39: 6486425326607753883
+      raios_4: -4987922704030391475
+      raios_40: 8464285412023958476
+      raios_41: -8389343407474168923
+      raios_42: 5641386614743546122
+      raios_43: -1344152215262741894
+      raios_44: 8507259838603189991
+      raios_45: -2205196865846722435
+      raios_46: 2819301018321771813
+      raios_47: 3295063872822825790
+      raios_48: -4796548513946385665
+      raios_49: -1434105416120724996
+      raios_5: -3188653108373528055
+      raios_50: 5507892442301257537
+      raios_51: -7398871023404638825
+      raios_52: -595553610248271915
+      raios_53: -1617588426021868255
+      raios_54: -5536099447839768975
+      raios_55: -1905115171579724901
+      raios_56: -6942235467254905151
+      raios_57: 3304440834394208227
+      raios_58: -3040197137871954438
+      raios_59: 4451756855859239440
+      raios_6: -9197624223381733762
+      raios_60: -1820176662851246814
+      raios_61: -4590201714067472164
+      raios_62: 7433115343904628362
+      raios_63: -1845613626754143534
+      raios_64: -3971398430375097192
+      raios_65: 1194657025327048597
+      raios_66: -2157983584724481743
+      raios_67: 3763200799621379577
+      raios_68: -916240042572944588
+      raios_69: -2036028159943241097
+      raios_7: 3537427676045665799
+      raios_70: -7580421630920843281
+      raios_71: -598020828826883234
+      raios_72: 7240652860838840672
+      raios_73: -4782163565609169321
+      raios_74: 524033943194336883
+      raios_75: 7130879967323554972
+      raios_76: 3792635689377545755
+      raios_77: -9004348250931676926
+      raios_78: -8328041973104808566
+      raios_79: 1125888800475872280
+      raios_8: -65919701811790424
+      raios_80: -2290042683093626756
+      raios_81: 764611274947454599
+      raios_82: -800740418452518190
+      raios_9: -3088943612947609113
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

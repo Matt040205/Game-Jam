@@ -165,7 +165,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cad940236f0e3124db26ea4ce9c7fc6b, type: 3}
   m_Color: {r: 0.57232696, g: 0.55404484, b: 0.3185593, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -214,7 +214,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 4, y: 4}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -300,6 +300,8 @@ MonoBehaviour:
   attackChargeTime: 1
   attackCooldown: 2
   damageAmount: 15
+  chargeSoundEvent: 
+  attackSoundEvent: 
 --- !u!114 &-7751095650020319101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,8 +315,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 50
-  hurtSound: {fileID: 0}
-  deathSound: {fileID: 0}
+  hurtSoundEvent: 
+  deathSoundEvent: 
   explodeOnDeath: 0
   explosionPrefab: {fileID: 0}
   dropTable:

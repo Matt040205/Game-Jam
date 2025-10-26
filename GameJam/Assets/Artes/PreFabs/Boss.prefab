@@ -402,7 +402,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 8178928158490218836, guid: bafe313f19f4b8d4d9199e377a218a13, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -451,7 +451,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.24, y: 0.39}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -630,6 +630,7 @@ MonoBehaviour:
   totalWaves: 2
   beamHazardPrefab: {fileID: 6514054648938891286, guid: cb3c584c7f8b0a04fa27daad4ee0654c, type: 3}
   beamSpawnRate: 10
+  beamSpawnOffset: 2
   moveSpeed: 6
   projectilePrefab: {fileID: 182311083848641816, guid: f730d00bcbf3d154c9ed162d464a7ac3, type: 3}
   meleeHitbox: {fileID: 4831302863871683271}
@@ -652,5 +653,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  hurtSound: {fileID: 0}
-  deathSound: {fileID: 0}
+  hurtSoundEvent: 
+  deathSoundEvent: 

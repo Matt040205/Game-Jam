@@ -49,6 +49,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1887019936571265717, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 39702a04e78d3cd4cbbc010efc501b8f, type: 3}
+    - target: {fileID: 1887019936571265717, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
@@ -128,6 +132,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo Atirador
       objectReference: {fileID: 0}
+    - target: {fileID: 8710716144519980676, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8710716144519980676, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4023330422098100545, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
     - {fileID: 2918089523252123642, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
@@ -177,7 +189,7 @@ MonoBehaviour:
   enemyProjectilePrefab: {fileID: 767188145663784615, guid: 2288f7ff30008fa498f5a72d4fba9d4d, type: 3}
   firePoint: {fileID: 6245865709891693552}
   fireRate: 2
-  shootSound: {fileID: 0}
+  shootSoundEvent: 
 --- !u!4 &6245865709891693552 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 113242411213457273, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
