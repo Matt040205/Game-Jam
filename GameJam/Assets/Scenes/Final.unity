@@ -1145,11 +1145,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSceneName: SampleScene
+  finalSceneName: Final
   mainMenuPanel: {fileID: 0}
   optionsPanel: {fileID: 0}
   creditsPanel: {fileID: 0}
   volumePanel: {fileID: 0}
+  finalScreenPanel: {fileID: 0}
   devCreditsText: {fileID: 0}
+  finalResultText: {fileID: 641222304}
 --- !u!4 &1896050211
 Transform:
   m_ObjectHideFlags: 0

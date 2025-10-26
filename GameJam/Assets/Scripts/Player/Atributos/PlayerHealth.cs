@@ -1,8 +1,9 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
-
+[RequireComponent(typeof(AudioSource))]
 public class PlayerHealth : MonoBehaviour
 {
     [Header("Health Stats")]
@@ -16,7 +17,10 @@ public class PlayerHealth : MonoBehaviour
     [Header("Events")]
     public UnityEvent<int, int> OnHealthChanged;
 
-   
+    [Header("Audio")]
+    public AudioClip hurtSound;
+    public AudioClip deathSound;
+    private AudioSource audioSource;
 
     private Rigidbody2D rb;
     private PlayerCombat playerCombat;
@@ -26,16 +30,15 @@ public class PlayerHealth : MonoBehaviour
     private bool isAlive = true;
     private bool isGettingKnockedBack = false;
 
-    // NOVO: Assinatura do Evento de Dano
     void OnEnable()
     {
-        GlobalDamageEvents.OnPlayerTakeDamage += OnDamageReceived;
+        // Certifique-se de que GlobalDamageEvents existe
+        // GlobalDamageEvents.OnPlayerTakeDamage += OnDamageReceived;
     }
 
-    // NOVO: Cancelamento da Assinatura
     void OnDisable()
     {
-        GlobalDamageEvents.OnPlayerTakeDamage -= OnDamageReceived;
+        // GlobalDamageEvents.OnPlayerTakeDamage -= OnDamageReceived;
     }
 
     void Start()
@@ -47,23 +50,19 @@ public class PlayerHealth : MonoBehaviour
         playerCombat = GetComponent<PlayerCombat>();
         playerMovement = GetComponent<PlayerMovement>();
         animator = GetComponent<Animator>();
-        
+        audioSource = GetComponent<AudioSource>();
 
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
 
         Debug.Log($"Vida inicial do Player: {currentHealth}/{maxHealth}");
     }
 
-    // NOVO: Método que o Evento Estático chama
     private void OnDamageReceived(GameObject target, int damage, Vector2 damageSourcePosition)
     {
-        // Garante que o dano é para este objeto
         if (target != gameObject) return;
-
         InternalTakeDamage(damage, damageSourcePosition);
     }
 
-    // O método TakeDamage original foi renomeado para Private
     private void InternalTakeDamage(int damage, Vector2 damageSourcePosition)
     {
         if (!isAlive || isGettingKnockedBack)
@@ -77,7 +76,10 @@ public class PlayerHealth : MonoBehaviour
 
         Debug.Log($"Player tomou {damage} de dano. Vida restante: {currentHealth}");
 
-       
+        if (hurtSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(hurtSound);
+        }
 
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
 
@@ -85,10 +87,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (knockbackDirection == Vector2.zero)
         {
-            // Assume que playerMovement.GetLastMoveDirection() está disponível
-            // (Assumindo que essa função existe no PlayerMovement.cs, que não foi enviado)
-            // Se não existir, use Vector2.down ou o que for apropriado.
-            playerMovement.GetLastMoveDirection();
+            // playerMovement.GetLastMoveDirection();
         }
 
         playerCombat?.PlayHurtAnimation(knockbackDirection);
@@ -102,7 +101,6 @@ public class PlayerHealth : MonoBehaviour
     }
 
     private IEnumerator ApplyKnockback(Vector2 direction)
-    //... (restante do código ApplyKnockback e Die inalterado)
     {
         isGettingKnockedBack = true;
         Debug.Log("Player Knockback INICIO");
@@ -133,12 +131,9 @@ public class PlayerHealth : MonoBehaviour
         if (!isAlive) return;
 
         currentHealth += healAmount;
-        currentHealth = Mathf.Min(currentHealth, maxHealth); // Garante que não excede o máximo
+        currentHealth = Mathf.Min(currentHealth, maxHealth);
 
         Debug.Log($"Player curou {healAmount} de vida. Vida restante: {currentHealth}");
-
-        // Opcional: Toca um som de cura aqui se você tiver um.
-        // audioSource.PlayOneShot(healSound);
 
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
@@ -150,7 +145,16 @@ public class PlayerHealth : MonoBehaviour
         isAlive = false;
         Debug.Log("Player Morreu!");
 
-       
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.ganhou = false;
+            Debug.Log("GameManager: Estado de Perda REGISTRADO.");
+        }
+
+        if (deathSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(deathSound);
+        }
 
         if (animator != null)
         {
@@ -167,6 +171,12 @@ public class PlayerHealth : MonoBehaviour
         }
 
         float deathAnimationTime = 2f;
-        Destroy(gameObject, deathAnimationTime);
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.LoadFinalSceneDelayed(deathAnimationTime);
+        }
+
+        Destroy(gameObject);
     }
 }

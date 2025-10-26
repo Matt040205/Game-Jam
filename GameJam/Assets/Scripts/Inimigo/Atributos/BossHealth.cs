@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(AudioSource))]
 public class BossHealth : MonoBehaviour
@@ -57,6 +58,13 @@ public class BossHealth : MonoBehaviour
     {
         isDead = true;
         Debug.Log("Boss MORREU!");
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.ganhou = true;
+            Debug.Log("GameManager: Estado de Vitória REGISTRADO.");
+        }
+
         bossController.enabled = false;
 
         if (deathSound != null)
@@ -69,6 +77,14 @@ public class BossHealth : MonoBehaviour
         }
 
         GetComponent<Collider2D>().enabled = false;
-        Destroy(gameObject, 5f);
+
+        float deathAnimationTime = 5f;
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.LoadFinalSceneDelayed(deathAnimationTime);
+        }
+
+        Destroy(gameObject);
     }
 }
