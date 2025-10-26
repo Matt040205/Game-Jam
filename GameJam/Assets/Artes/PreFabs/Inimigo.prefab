@@ -96,6 +96,8 @@ GameObject:
   - component: {fileID: 5296731322856382753}
   - component: {fileID: 2918089523252123642}
   - component: {fileID: 4023330422098100545}
+  - component: {fileID: -7751095650020319101}
+  - component: {fileID: -1015242171169647481}
   m_Layer: 0
   m_Name: Inimigo
   m_TagString: Enemy
@@ -162,7 +164,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.57232696, g: 0.55404484, b: 0.3185593, a: 1}
   m_FlipX: 0
@@ -298,3 +300,128 @@ MonoBehaviour:
   attackChargeTime: 1
   attackCooldown: 2
   damageAmount: 15
+--- !u!114 &-7751095650020319101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5964664012812006386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c72277f36f9d14d83795cc7a0c9942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 50
+  hurtSound: {fileID: 0}
+  deathSound: {fileID: 0}
+  explodeOnDeath: 0
+  explosionPrefab: {fileID: 0}
+  dropTable:
+  - prefab: {fileID: 7819283660314111462, guid: f2ce48d576cc9a24d856cc43aeb4771c, type: 3}
+    dropChance: 10
+  - prefab: {fileID: 7819283660314111462, guid: 616e449973db2194497b0f8b3f2f8530, type: 3}
+    dropChance: 10
+  - prefab: {fileID: 7819283660314111462, guid: 9db93ee8ec7655741942951083434a28, type: 3}
+    dropChance: 10
+  - prefab: {fileID: 7819283660314111462, guid: 30f1963e2838db2499bcf07ebfd0315e, type: 3}
+    dropChance: 10
+  - prefab: {fileID: 7819283660314111462, guid: 509b0b89e1b8e014dab872d9d748ecc9, type: 3}
+    dropChance: 25
+--- !u!82 &-1015242171169647481
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5964664012812006386}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

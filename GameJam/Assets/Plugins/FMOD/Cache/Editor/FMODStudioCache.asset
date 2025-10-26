@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: FmodProject/Pinoquio/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638970296364631594
+  lastModified: 638970455532128131
   FileSizes:
   - Name: Desktop
     Value: 776
@@ -67,7 +67,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: -3882608980630707574}
   cacheVersion: 131849
-  cacheTime: 638970296364631594
+  cacheTime: 638970455532128131
   SerializableEventsDict: []
 --- !u!114 &5496140406514843257
 MonoBehaviour:
@@ -84,7 +84,7 @@ MonoBehaviour:
   Path: FmodProject/Pinoquio/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638970296364631594
+  lastModified: 638970455532118130
   FileSizes:
   - Name: Desktop
     Value: 1254

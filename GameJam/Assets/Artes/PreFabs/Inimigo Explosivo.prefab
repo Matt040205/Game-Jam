@@ -91,6 +91,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7751095650020319101, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
+      propertyPath: explodeOnDeath
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7751095650020319101, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
+      propertyPath: explosionPrefab
+      value: 
+      objectReference: {fileID: 3307332359599546563, guid: a39fa677bd2f8ee44a1b970dd1bd96d2, type: 3}
     - target: {fileID: 113242411213457273, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -130,6 +138,10 @@ PrefabInstance:
     - target: {fileID: 113242411213457273, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1887019936571265717, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2168477567139048036, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
       propertyPath: explodeOnDeath

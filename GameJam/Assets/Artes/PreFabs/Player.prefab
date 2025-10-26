@@ -454,7 +454,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -577,6 +577,12 @@ MonoBehaviour:
   dashSpeed: 20
   dashDuration: 0.2
   dashCooldown: 1
+  maxStamina: 100
+  dashStaminaCost: 30
+  staminaRechargeDelay: 3
+  staminaRechargeIdleRate: 10
+  staminaRechargeMovingRate: 5
+  invertControls: 0
 --- !u!114 &1135336318941732535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -589,6 +595,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 872d852b454cbfa4e900b1d0dddbaa06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTripodeMarcianoUnlocked: 0
+  isGeradorGalvanicoUnlocked: 0
+  isMantoDeNVOAUnlocked: 0
+  isRelogioDoChapeleiroUnlocked: 0
+  maxAbilitySlots: 2
   comboStep: 0
   comboTimeWindow: 0.5
   hitboxUp: {fileID: 2990647522960454450}

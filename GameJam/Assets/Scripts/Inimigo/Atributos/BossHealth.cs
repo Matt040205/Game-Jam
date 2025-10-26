@@ -15,34 +15,20 @@ public class BossHealth : MonoBehaviour
     private BossJulgador bossController;
     private bool isDead = false;
 
-    // NOVO: Assinatura do Evento de Dano
-    void OnEnable()
-    {
-        GlobalDamageEvents.OnEnemyTakeDamage += OnDamageReceived;
-    }
-
-    // NOVO: Cancelamento da Assinatura
-    void OnDisable()
-    {
-        GlobalDamageEvents.OnEnemyTakeDamage -= OnDamageReceived;
-    }
-
     void Start()
     {
-        //... (código Start inalterado)
+        currentHealth = maxHealth;
+        audioSource = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
+        bossController = GetComponent<BossJulgador>();
     }
 
-    // NOVO: Método que o Evento Estático chama
-    private void OnDamageReceived(GameObject target, int damage)
+    public int GetCurrentHealth()
     {
-        // Garante que o dano é para este objeto
-        if (target != gameObject) return;
-
-        InternalTakeDamage(damage);
+        return currentHealth;
     }
 
-    // O método TakeDamage original foi renomeado para Private
-    private void InternalTakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         if (isDead) return;
 
@@ -65,11 +51,6 @@ public class BossHealth : MonoBehaviour
                 animator.SetTrigger("Hurt");
             }
         }
-    }
-
-    public int GetCurrentHealth()
-    {
-        return currentHealth;
     }
 
     private void Die()

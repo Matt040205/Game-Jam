@@ -48,6 +48,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1887019936571265717, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2168477567139048036, guid: 3650a00d29ae0db4bb1b797e8b76cbba, type: 3}
       propertyPath: dropTable.Array.size
       value: 5
