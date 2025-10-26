@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3898768986527673654}
   - component: {fileID: -7557125434853531667}
-  - component: {fileID: 6543410487922518105}
+  - component: {fileID: 147214701119471665}
   - component: {fileID: 773284930977773792}
   m_Layer: 0
   m_Name: Explosion
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  m_Sprite: {fileID: 6943842554323004900, guid: e4df7d9c2e2fe0148a96a437b09c9ced, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -89,7 +89,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &6543410487922518105
+--- !u!58 &147214701119471665
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,7 +124,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 1.5
+  m_Radius: 2.5
 --- !u!114 &773284930977773792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,3 +139,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 40
   explosionDuration: 1.5
+  explosionSoundEvent: 
