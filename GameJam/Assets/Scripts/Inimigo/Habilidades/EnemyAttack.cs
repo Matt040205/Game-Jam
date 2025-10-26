@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
+
 public class EnemyAttack : MonoBehaviour
 {
     [Header("Attack Settings")]
@@ -9,10 +9,7 @@ public class EnemyAttack : MonoBehaviour
     public float attackCooldown = 2.0f;
     public int damageAmount = 15;
 
-    [Header("Audio")]
-    public AudioClip chargeSound;
-    public AudioClip attackSound;
-    private AudioSource audioSource;
+    
 
     private PlayerHealth playerHealth;
     private EnemyMovement enemyMovement;
@@ -26,7 +23,7 @@ public class EnemyAttack : MonoBehaviour
     {
         enemyMovement = GetComponent<EnemyMovement>();
         animator = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
+       
     }
 
     // MÉTODO UPDATE() RESTAURADO: Checa a condição para iniciar o ataque
@@ -43,22 +40,14 @@ public class EnemyAttack : MonoBehaviour
         canAttack = false;
         if (enemyMovement != null) enemyMovement.canMove = false;
 
-        Debug.Log("Inimigo está a 'carregar' o ataque...");
-        if (chargeSound != null)
-        {
-            audioSource.PlayOneShot(chargeSound);
-        }
+        
         if (animator != null) animator.SetTrigger("ChargeAttack");
 
         yield return new WaitForSeconds(attackChargeTime);
 
         if (playerIsInRange && playerHealth != null)
         {
-            Debug.Log("Inimigo ATACA!");
-            if (attackSound != null)
-            {
-                audioSource.PlayOneShot(attackSound);
-            }
+           
 
             // CORREÇÃO MANTIDA: Usa o Evento Estático para desacoplamento e dano.
             // (Requer que a classe GlobalDamageEvents exista no seu projeto)

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{38e0245d-032e-4ee8-a188-2a0e65b8cf11}">
+		<property name="assetPath">
+			<value>Cura.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.99938775510204081</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e0b96969-8f34-41b8-a40b-375962a2183b}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{d5645b04-4b91-4832-a44d-8790e73c3c2e}">
+		<property name="assetPath">
+			<value>Golpe3.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.0508390022675738</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e0b96969-8f34-41b8-a40b-375962a2183b}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
+
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
@@ -21,9 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private float currentStamina;
     private float lastDashTime = -100f; // Variável de controle para o delay de recarga
 
-    [Header("Audio")]
-    public AudioClip dashSound;
-    private AudioSource audioSource;
+  
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -44,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        audioSource = GetComponent<AudioSource>();
+        
         lastMoveDirection = Vector2.down;
 
         currentStamina = maxStamina;
@@ -177,10 +175,7 @@ public class PlayerMovement : MonoBehaviour
 
         lastMoveDirection = dashDirection;
 
-        if (dashSound != null)
-        {
-            audioSource.PlayOneShot(dashSound);
-        }
+       
 
         animator.SetTrigger("Dash");
 

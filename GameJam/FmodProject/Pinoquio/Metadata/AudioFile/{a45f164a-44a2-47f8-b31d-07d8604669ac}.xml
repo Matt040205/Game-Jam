@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{a45f164a-44a2-47f8-b31d-07d8604669ac}">
+		<property name="assetPath">
+			<value>RaioTentativa.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>17.199999999999999</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e0b96969-8f34-41b8-a40b-375962a2183b}</destination>
+		</relationship>
+	</object>
+</objects>

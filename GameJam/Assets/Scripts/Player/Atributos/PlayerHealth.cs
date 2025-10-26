@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(AudioSource))]
+
 public class PlayerHealth : MonoBehaviour
 {
     [Header("Health Stats")]
@@ -16,10 +16,7 @@ public class PlayerHealth : MonoBehaviour
     [Header("Events")]
     public UnityEvent<int, int> OnHealthChanged;
 
-    [Header("Audio")]
-    public AudioClip hurtSound;
-    public AudioClip deathSound;
-    private AudioSource audioSource;
+   
 
     private Rigidbody2D rb;
     private PlayerCombat playerCombat;
@@ -50,7 +47,7 @@ public class PlayerHealth : MonoBehaviour
         playerCombat = GetComponent<PlayerCombat>();
         playerMovement = GetComponent<PlayerMovement>();
         animator = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
+        
 
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
 
@@ -80,10 +77,7 @@ public class PlayerHealth : MonoBehaviour
 
         Debug.Log($"Player tomou {damage} de dano. Vida restante: {currentHealth}");
 
-        if (hurtSound != null)
-        {
-            audioSource.PlayOneShot(hurtSound);
-        }
+       
 
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
 
@@ -156,10 +150,7 @@ public class PlayerHealth : MonoBehaviour
         isAlive = false;
         Debug.Log("Player Morreu!");
 
-        if (deathSound != null)
-        {
-            audioSource.PlayOneShot(deathSound);
-        }
+       
 
         if (animator != null)
         {
