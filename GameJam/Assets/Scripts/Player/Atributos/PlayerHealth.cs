@@ -2,25 +2,33 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI; // <-- **ADICIONAR** para usar Image
 
-[RequireComponent(typeof(AudioSource))]
+// REMOVA a linha abaixo se você removeu o AudioSource (era para compatibilidade antiga)
+// [RequireComponent(typeof(AudioSource))]
 public class PlayerHealth : MonoBehaviour
 {
     [Header("Health Stats")]
     public int maxHealth = 100;
     private int currentHealth;
 
+    // --- **NOVO:** Referência para a Barra de Vida ---
+    [Header("UI")]
+    [Tooltip("Arraste a Image da barra de vida (com Image Type = Filled) para cá.")]
+    public Image healthBarImage;
+    // --- **FIM NOVO** ---
+
     [Header("Knockback Settings")]
     public float knockbackForce = 7f;
     public float knockbackDuration = 0.2f;
 
     [Header("Events")]
-    public UnityEvent<int, int> OnHealthChanged; // Para UI
+    public UnityEvent<int, int> OnHealthChanged; // Ainda pode ser útil para outras coisas
 
     [Header("Audio")]
-    public AudioClip hurtSound;
-    public AudioClip deathSound;
-    private AudioSource audioSource;
+    public AudioClip hurtSound; // Manter se ainda usar AudioSource legado
+    public AudioClip deathSound; // Manter se ainda usar AudioSource legado
+    private AudioSource audioSource; // Manter se ainda usar AudioSource legado
 
     private Rigidbody2D rb;
     private PlayerCombat playerCombat;
@@ -30,19 +38,17 @@ public class PlayerHealth : MonoBehaviour
     private bool isAlive = true;
     private bool isGettingKnockedBack = false;
 
-    // --- CORREÇÃO: Ouve o evento ---
     void OnEnable()
     {
-        GlobalDamageEvents.OnPlayerTakeDamage += OnDamageReceived; // Descomentado
+        GlobalDamageEvents.OnPlayerTakeDamage += OnDamageReceived;
         Debug.Log("[PlayerHealth] OnEnable - Assinando evento OnPlayerTakeDamage.");
     }
 
     void OnDisable()
     {
-        GlobalDamageEvents.OnPlayerTakeDamage -= OnDamageReceived; // Descomentado
+        GlobalDamageEvents.OnPlayerTakeDamage -= OnDamageReceived;
         Debug.Log("[PlayerHealth] OnDisable - Cancelando assinatura do evento OnPlayerTakeDamage.");
     }
-    // --- FIM CORREÇÃO ---
 
     void Start()
     {
@@ -52,21 +58,22 @@ public class PlayerHealth : MonoBehaviour
         playerCombat = GetComponent<PlayerCombat>();
         playerMovement = GetComponent<PlayerMovement>();
         animator = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
-        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+        audioSource = GetComponent<AudioSource>(); // Manter se usar AudioSource
+
+        // **NOVO:** Atualiza a barra no início
+        UpdateHealthBar();
+
+        OnHealthChanged?.Invoke(currentHealth, maxHealth); // Mantém o evento
         Debug.Log($"[PlayerHealth] Start. Vida: {currentHealth}/{maxHealth}");
     }
 
-    // --- CORREÇÃO: Função chamada pelo evento ---
     private void OnDamageReceived(GameObject target, int damage, Vector2 damageSourcePosition)
     {
-        if (target != gameObject) return; // Garante que é para este Player
+        if (target != gameObject) return;
         Debug.Log($"[PlayerHealth] Evento OnPlayerTakeDamage recebido! Dano: {damage}");
         InternalTakeDamage(damage, damageSourcePosition);
     }
-    // --- FIM CORREÇÃO ---
 
-    // Função privada que aplica o dano (chamada pelo OnDamageReceived)
     private void InternalTakeDamage(int damage, Vector2 damageSourcePosition)
     {
         if (!isAlive || isGettingKnockedBack)
@@ -79,8 +86,11 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = Mathf.Max(currentHealth, 0);
         Debug.Log($"[PlayerHealth] VIDA ATUAL: {currentHealth}. Tomou {damage} de dano.");
 
-        if (hurtSound != null) audioSource.PlayOneShot(hurtSound);
-        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+        // **NOVO:** Atualiza a barra após tomar dano
+        UpdateHealthBar();
+
+        if (hurtSound != null && audioSource != null) audioSource.PlayOneShot(hurtSound); // Manter se usar AudioSource
+        OnHealthChanged?.Invoke(currentHealth, maxHealth); // Mantém o evento
 
         Vector2 knockbackDirection = ((Vector2)transform.position - damageSourcePosition).normalized;
         if (knockbackDirection == Vector2.zero && playerMovement != null)
@@ -94,51 +104,58 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0) Die();
     }
 
+    // --- **NOVO:** Função para atualizar a barra de vida ---
+    private void UpdateHealthBar()
+    {
+        if (healthBarImage != null)
+        {
+            // Calcula a porcentagem de vida (0.0 a 1.0)
+            float fillAmount = (float)currentHealth / maxHealth;
+            healthBarImage.fillAmount = fillAmount;
+            Debug.Log($"[PlayerHealth] Barra de vida atualizada para {fillAmount * 100}%.");
+        }
+        else
+        {
+            Debug.LogWarning("[PlayerHealth] Referência da Imagem da barra de vida (healthBarImage) não definida no Inspetor!");
+        }
+    }
+    // --- **FIM NOVO** ---
+
     private IEnumerator ApplyKnockback(Vector2 direction)
     {
         isGettingKnockedBack = true;
-        Debug.Log("[PlayerHealth] Knockback INICIO");
         if (playerMovement != null) playerMovement.enabled = false;
-
-        rb.linearVelocity = Vector2.zero; // <-- Corrigido para velocity
+        rb.linearVelocity = Vector2.zero; // Corrigido para velocity
         rb.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
-
         yield return new WaitForSeconds(knockbackDuration);
-
-        Debug.Log("[PlayerHealth] Knockback FIM");
-        rb.linearVelocity = Vector2.zero; // <-- Corrigido para velocity
-
+        rb.linearVelocity = Vector2.zero; // Corrigido para velocity
         if (playerMovement != null && isAlive) playerMovement.enabled = true;
         isGettingKnockedBack = false;
     }
 
-    public void Heal(int healAmount) {/* ... */} // Sem alterações
+    public void Heal(int healAmount)
+    {
+        if (!isAlive) return;
+        currentHealth += healAmount;
+        currentHealth = Mathf.Min(currentHealth, maxHealth); // Não ultrapassa o máximo
+
+        // **NOVO:** Atualiza a barra após curar
+        UpdateHealthBar();
+
+        OnHealthChanged?.Invoke(currentHealth, maxHealth); // Mantém o evento
+        Debug.Log($"[PlayerHealth] Player curou {healAmount}. Vida: {currentHealth}");
+    }
 
     private void Die()
     {
         if (!isAlive) return;
         isAlive = false;
         Debug.Log("[PlayerHealth] Player Morreu!");
-
-        // --- CORREÇÃO: Carrega cena "FinalRuim" diretamente ---
         SceneManager.LoadScene("FinalRuim");
-        // --- FIM CORREÇÃO ---
-
-        if (deathSound != null) audioSource.PlayOneShot(deathSound);
+        if (deathSound != null && audioSource != null) audioSource.PlayOneShot(deathSound); // Manter se usar AudioSource
         if (animator != null) animator.SetTrigger("Die");
         if (playerMovement != null) playerMovement.enabled = false;
         if (playerCombat != null) playerCombat.enabled = false;
-        if (rb != null)
-        {
-            rb.linearVelocity = Vector2.zero; // <-- Corrigido para velocity
-            rb.bodyType = RigidbodyType2D.Kinematic;
-        }
-
-        // Não precisa mais do GameManager para carregar a cena aqui
-        // Destroy(gameObject); // O carregamento da cena já destrói
+        if (rb != null) { rb.linearVelocity = Vector2.zero; rb.bodyType = RigidbodyType2D.Kinematic; }
     }
-
-    // --- CORREÇÃO: REMOVER OnDestroy ---
-    // private void OnDestroy() { /* SceneManager.LoadScene("FinalRuim"); */ } // Removido!
-    // --- FIM CORREÇÃO ---
 }
