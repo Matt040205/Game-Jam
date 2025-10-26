@@ -1,12 +1,19 @@
 using UnityEngine;
+using FMODUnity; // <- Adicionado
 
 public class ExplosionDamage : MonoBehaviour
 {
     public int damage = 25;
     public float explosionDuration = 0.2f;
 
+    [Header("FMOD Events")]
+    [EventRef] public string explosionSoundEvent; // <- Adicionado
+
     void Start()
     {
+        // --- FMOD ---
+        if (!string.IsNullOrEmpty(explosionSoundEvent)) RuntimeManager.PlayOneShot(explosionSoundEvent, transform.position);
+        // --- FIM FMOD ---
         Destroy(gameObject, explosionDuration);
     }
 
@@ -14,12 +21,6 @@ public class ExplosionDamage : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Explosão acertou o Player!");
-
-            // CÓDIGO ANTIGO: PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
-            // CÓDIGO ANTIGO: if (playerHealth != null) { ... playerHealth.TakeDamage(damage, transform.position); }
-
-            // NOVO: Dispara o evento de dano (Substitui o GetComponent)
             GlobalDamageEvents.FirePlayerDamage(other.gameObject, damage, transform.position);
         }
     }

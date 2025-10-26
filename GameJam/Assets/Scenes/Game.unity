@@ -366,6 +366,8 @@ MonoBehaviour:
   cameraLockPoints:
   - {fileID: 210075635}
   cameraMoveSpeed: 5
+  zoomedOutSize: 10
+  zoomSpeed: 3
 --- !u!4 &210075635
 Transform:
   m_ObjectHideFlags: 0
@@ -519,6 +521,8 @@ MonoBehaviour:
   cameraLockPoints:
   - {fileID: 269535843}
   cameraMoveSpeed: 5
+  zoomedOutSize: 10
+  zoomSpeed: 3
 --- !u!61 &269535845
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11639,6 +11643,8 @@ MonoBehaviour:
   cameraLockPoints:
   - {fileID: 1177370818}
   cameraMoveSpeed: 5
+  zoomedOutSize: 10
+  zoomSpeed: 3
 --- !u!1 &1221707547
 GameObject:
   m_ObjectHideFlags: 0
@@ -11730,6 +11736,8 @@ MonoBehaviour:
   cameraLockPoints:
   - {fileID: 1221707550}
   cameraMoveSpeed: 5
+  zoomedOutSize: 10
+  zoomSpeed: 3
 --- !u!4 &1221707550
 Transform:
   m_ObjectHideFlags: 0
@@ -11836,6 +11844,8 @@ MonoBehaviour:
   cameraLockPoints:
   - {fileID: 1543852411}
   cameraMoveSpeed: 5
+  zoomedOutSize: 10
+  zoomSpeed: 3
 --- !u!4 &1543852411
 Transform:
   m_ObjectHideFlags: 0
@@ -12250,13 +12260,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1135336318941732535, guid: 883ae964dfd8b9c4286bea9a5e194cef, type: 3}
+      propertyPath: relogioSoundEvent
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4578159054450674188, guid: 883ae964dfd8b9c4286bea9a5e194cef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 29.75
+      value: -1.37
       objectReference: {fileID: 0}
     - target: {fileID: 4578159054450674188, guid: 883ae964dfd8b9c4286bea9a5e194cef, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.97
+      value: -1.62
       objectReference: {fileID: 0}
     - target: {fileID: 4578159054450674188, guid: 883ae964dfd8b9c4286bea9a5e194cef, type: 3}
       propertyPath: m_LocalPosition.z

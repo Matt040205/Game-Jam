@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-
+using FMODUnity; // <- Adicionado
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,32 +9,17 @@ public class PlayerMovement : MonoBehaviour
     public float dashDuration = 0.2f;
     public float dashCooldown = 1f;
 
-    [Header("Stamina")]
-    public float maxStamina = 100f;
-    public float dashStaminaCost = 30f;
+    [Header("FMOD Events")]
+    [Tooltip("Caminho do evento FMOD para o som do Dash.")]
+    [EventRef] public string dashSoundEvent; // <- Substitui AudioClip
 
-    [Header("Stamina Recharge Rules")]
-    public float staminaRechargeDelay = 3f; // Tempo para começar a recarregar após o Dash
-    public float staminaRechargeIdleRate = 10f; // Recarga parado (por segundo)
-    public float staminaRechargeMovingRate = 5f; // Recarga andando (por segundo)
-
-    private float currentStamina;
-    private float lastDashTime = -100f; // Variável de controle para o delay de recarga
-
-  
+    // Remove: private AudioSource audioSource;
 
     private Rigidbody2D rb;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
-
-    private Vector2 moveDirection;
-    private Vector2 lastMoveDirection;
-    private Vector2 dashDirection;
-    private bool isMoving = false;
-    private bool isDashing = false;
-    private bool canDash = true;
-    private bool canMove = true;
-
+    private Vector2 moveDirection, lastMoveDirection, dashDirection;
+    private bool isMoving, isDashing, canDash = true, canMove = true;
     public bool invertControls = false;
 
     void Start()
@@ -42,165 +27,67 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        
+        // Remove: audioSource = GetComponent<AudioSource>();
         lastMoveDirection = Vector2.down;
-
-        currentStamina = maxStamina;
-        Debug.Log($"Stamina inicial do Player: {currentStamina:F2}");
     }
 
     void Update()
     {
-        HandleStaminaRecharge();
-
         if (canMove)
         {
             float inputX = Input.GetAxisRaw("Horizontal");
             float inputY = Input.GetAxisRaw("Vertical");
-
-            if (invertControls)
-            {
-                inputX *= -1;
-                inputY *= -1;
-            }
-
+            if (invertControls) { inputX *= -1; inputY *= -1; }
             moveDirection = new Vector2(inputX, inputY).normalized;
             isMoving = moveDirection.magnitude > 0.1f;
-
-            if (isMoving)
-            {
-                lastMoveDirection = moveDirection;
-            }
+            if (isMoving) lastMoveDirection = moveDirection;
         }
-        else
-        {
-            moveDirection = Vector2.zero;
-            isMoving = false;
-        }
+        else { moveDirection = Vector2.zero; isMoving = false; }
 
-        if (Input.GetKeyDown(KeyCode.Space) && canDash)
-        {
-            StartCoroutine(Dash());
-        }
-
+        if (Input.GetKeyDown(KeyCode.Space) && canDash) StartCoroutine(Dash());
         UpdateAnimations();
     }
 
     void FixedUpdate()
     {
-        if (isDashing)
-        {
-            rb.linearVelocity = dashDirection * dashSpeed;
-        }
-        else if (isMoving)
-        {
-            rb.linearVelocity = moveDirection * moveSpeed;
-        }
-        else
-        {
-            rb.linearVelocity = Vector2.zero;
-        }
-    }
-
-    private void HandleStaminaRecharge()
-    {
-        // NOVA LÓGICA 1: Checa o delay de 3 segundos
-        if (Time.time < lastDashTime + staminaRechargeDelay)
-        {
-            // Opcional: log para mostrar o tempo restante do delay
-            Debug.Log($"Stamina em cooldown. Recarrega em: {lastDashTime + staminaRechargeDelay - Time.time:F2}s");
-            return;
-        }
-
-        if (currentStamina < maxStamina)
-        {
-            // NOVA LÓGICA 2: Determina a taxa de recarga baseada no movimento
-            float rechargeRate = isMoving ? staminaRechargeMovingRate : staminaRechargeIdleRate;
-
-            currentStamina += rechargeRate * Time.deltaTime;
-            currentStamina = Mathf.Min(currentStamina, maxStamina);
-
-            // Debug Log para a recarga
-            Debug.Log($"Stamina recarregando a {rechargeRate:F0} por segundo ({(isMoving ? "ANDANDO" : "PARADO")}). Valor: {currentStamina:F2}/{maxStamina:F2}");
-        }
+        if (isDashing) rb.linearVelocity = dashDirection * dashSpeed;
+        else if (isMoving) rb.linearVelocity = moveDirection * moveSpeed;
+        else rb.linearVelocity = Vector2.zero;
     }
 
     private void UpdateAnimations()
     {
         animator.SetBool("isMoving", isMoving);
-
         Vector2 visualDirection = isDashing ? dashDirection : lastMoveDirection;
-
         if (isMoving || isDashing)
         {
             animator.SetFloat("MoveX", visualDirection.x);
             animator.SetFloat("MoveY", visualDirection.y);
-
-            if (visualDirection.x < -0.1f)
-            {
-                spriteRenderer.flipX = true;
-            }
-            else if (visualDirection.x > 0.1f)
-            {
-                spriteRenderer.flipX = false;
-            }
+            if (visualDirection.x < -0.1f) spriteRenderer.flipX = true;
+            else if (visualDirection.x > 0.1f) spriteRenderer.flipX = false;
         }
     }
 
     private IEnumerator Dash()
     {
-        if (currentStamina < dashStaminaCost)
-        {
-            Debug.Log("Dash falhou: Stamina insuficiente!");
-            yield break;
-        }
-
-        // NOVO: Consome e registra o tempo do dash
-        currentStamina -= dashStaminaCost;
-        lastDashTime = Time.time;
-        Debug.Log($"Dash usado! Stamina restante: {currentStamina:F2}. COOLDOWN DE RECARGA INICIADO.");
-
-        canDash = false;
-        isDashing = true;
-        canMove = false;
-
-        if (moveDirection.magnitude > 0.1f)
-        {
-            dashDirection = moveDirection;
-        }
-        else
-        {
-            dashDirection = lastMoveDirection;
-        }
-
+        canDash = false; isDashing = true; canMove = false;
+        if (moveDirection.magnitude > 0.1f) dashDirection = moveDirection;
+        else dashDirection = lastMoveDirection;
         lastMoveDirection = dashDirection;
 
-       
+        // --- FMOD ---
+        if (!string.IsNullOrEmpty(dashSoundEvent))
+        {
+            RuntimeManager.PlayOneShot(dashSoundEvent, transform.position);
+        }
+        // --- FIM FMOD ---
 
         animator.SetTrigger("Dash");
-
         yield return new WaitForSeconds(dashDuration);
-
-        isDashing = false;
-        canMove = true;
-
+        isDashing = false; canMove = true;
         yield return new WaitForSeconds(dashCooldown - dashDuration);
-
         canDash = true;
     }
 
-    public Vector2 GetLastMoveDirection()
-    {
-        return lastMoveDirection;
-    }
-
-    public float GetCurrentStamina()
-    {
-        return currentStamina;
-    }
-
-    public float GetMaxStamina()
-    {
-        return maxStamina;
-    }
+    public Vector2 GetLastMoveDirection() { return lastMoveDirection; }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using FMODUnity; // <- Adicionado
 
 public class LaserProjectile : MonoBehaviour
 {
@@ -6,8 +7,9 @@ public class LaserProjectile : MonoBehaviour
     public float lifeTime = 2.0f;
     public int damageAmount = 10;
 
-    [Header("Audio")]
-    public AudioClip hitSound;
+    [Header("FMOD Events")]
+    [EventRef] public string hitSoundEvent; // <- Substitui AudioClip
+    // Remove: public AudioClip hitSound;
 
     private Rigidbody2D rb;
     private Vector2 moveDirection;
@@ -28,32 +30,19 @@ public class LaserProjectile : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (rb != null && moveDirection != Vector2.zero)
-        {
-            rb.linearVelocity = moveDirection * moveSpeed; // Corrigido para velocity
-        }
+        if (rb != null && moveDirection != Vector2.zero) rb.linearVelocity = moveDirection * moveSpeed;
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log($"[LaserProjectile] Trigger Enter com: {other.name}");
-
         if (other.CompareTag("Enemy"))
         {
-            Debug.Log("[LaserProjectile] Acertou o INIMIGO!");
-
-            // --- CORREÇÃO: Sempre dispara o evento OnEnemyTakeDamage ---
             GlobalDamageEvents.FireEnemyDamage(other.gameObject, damageAmount);
-            Debug.Log($"[LaserProjectile] Evento FireEnemyDamage disparado para {other.name}.");
-            // --- FIM CORREÇÃO ---
-
-            if (hitSound != null) AudioSource.PlayClipAtPoint(hitSound, transform.position);
+            // --- FMOD ---
+            if (!string.IsNullOrEmpty(hitSoundEvent)) RuntimeManager.PlayOneShot(hitSoundEvent, transform.position);
+            // --- FIM FMOD ---
             Destroy(gameObject);
         }
-        else if (other.CompareTag("Wall"))
-        {
-            Debug.Log("[LaserProjectile] Acertou a Parede.");
-            Destroy(gameObject);
-        }
+        else if (other.CompareTag("Wall")) Destroy(gameObject);
     }
 }

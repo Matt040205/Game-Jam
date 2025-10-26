@@ -1,74 +1,42 @@
 using UnityEngine;
+using FMODUnity; // <- Adicionado
 
-[RequireComponent(typeof(AudioSource))]
 public class EnemyShooterAttack : MonoBehaviour
 {
-    [Header("Shooting")]
-    public GameObject enemyProjectilePrefab;
-    public Transform firePoint;
-    public float fireRate = 2f;
+    [Header("Shooting")] public GameObject enemyProjectilePrefab; public Transform firePoint; public float fireRate = 2f;
+    [Header("FMOD Events")]
+    [EventRef] public string shootSoundEvent; // <- Substitui AudioClip
+    // Remove: private AudioSource audioSource;
 
-    [Header("Audio")]
-    public AudioClip shootSound;
-    private AudioSource audioSource;
     private Animator animator;
-
     private Transform target;
     private bool canShoot = false;
     private float fireTimer = 0f;
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
-
+        // Remove: audioSource = GetComponent<AudioSource>();
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
-        {
-            target = player.transform;
-        }
+        if (player != null) target = player.transform;
     }
 
-    void Update()
-    {
-        if (canShoot && Time.time > fireTimer)
-        {
-            Shoot();
-            fireTimer = Time.time + fireRate;
-        }
-    }
+    void Update() { if (canShoot && Time.time >= fireTimer) { Shoot(); fireTimer = Time.time + fireRate; } }
 
     private void Shoot()
     {
-        if (target == null || enemyProjectilePrefab == null || firePoint == null)
-        {
-            return;
-        }
+        if (target == null || enemyProjectilePrefab == null || firePoint == null) return;
+        if (animator != null) animator.SetTrigger("Attack");
 
-        Debug.Log("Inimigo Atirador DISPARA!");
-        if (animator != null)
-        {
-            animator.SetTrigger("Attack");
-        }
-
-        if (shootSound != null)
-        {
-            audioSource.PlayOneShot(shootSound);
-        }
+        // --- FMOD ---
+        if (!string.IsNullOrEmpty(shootSoundEvent)) RuntimeManager.PlayOneShot(shootSoundEvent, firePoint.position);
+        // --- FIM FMOD ---
 
         Vector2 directionToPlayer = (target.position - firePoint.position).normalized;
-
         GameObject projectileObj = Instantiate(enemyProjectilePrefab, firePoint.position, Quaternion.identity);
         EnemyProjectile projectile = projectileObj.GetComponent<EnemyProjectile>();
-
-        if (projectile != null)
-        {
-            projectile.SetDirection(directionToPlayer);
-        }
+        if (projectile != null) projectile.SetDirection(directionToPlayer);
     }
 
-    public void SetCanShoot(bool isAllowed)
-    {
-        canShoot = isAllowed;
-    }
+    public void SetCanShoot(bool isAllowed) { canShoot = isAllowed; }
 }
