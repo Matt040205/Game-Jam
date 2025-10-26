@@ -167,7 +167,7 @@ public class MenuManager : MonoBehaviour
         Debug.Log($"[MenuManager] Botão Jogar clicado. Carregando Cena: {gameSceneName}");
         // Reseta o estado de vitória antes de carregar (se GameManager existir)
         if (GameManager.Instance != null) { GameManager.Instance.ganhou = false; }
-        SceneManager.LoadScene(gameSceneName);
+        SceneManager.LoadScene("Game");
     }
 
     // Volta para a cena "Menu" (usado na tela Final)
