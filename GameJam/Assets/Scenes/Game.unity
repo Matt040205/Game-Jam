@@ -14005,6 +14005,10 @@ PrefabInstance:
       propertyPath: abilityIcons.Array.data[1].icon
       value: 
       objectReference: {fileID: 21300000, guid: 8538dbfa0908f2445878724dcdb6705f, type: 3}
+    - target: {fileID: 1135336318941732535, guid: 883ae964dfd8b9c4286bea9a5e194cef, type: 3}
+      propertyPath: abilityIcons.Array.data[2].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: d0860b695f8aad648af0de48acad7b3a, type: 3}
     - target: {fileID: 4482199271252454084, guid: 883ae964dfd8b9c4286bea9a5e194cef, type: 3}
       propertyPath: staminaBarImage
       value: 
