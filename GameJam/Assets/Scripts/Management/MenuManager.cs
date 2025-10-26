@@ -115,6 +115,10 @@ public class MenuManager : MonoBehaviour
         // Carrega a cena do jogo
         SceneManager.LoadScene("Game");
     }
+    public void Menu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
 
 
     public void Sair()

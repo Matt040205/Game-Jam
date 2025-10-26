@@ -87,4 +87,9 @@ public class BossHealth : MonoBehaviour
 
         Destroy(gameObject);
     }
+
+    private void OnDestroy()
+    {
+        SceneManager.LoadScene("FinalBom");
+    }
 }

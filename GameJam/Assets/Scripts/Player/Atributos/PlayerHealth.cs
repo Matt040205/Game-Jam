@@ -179,4 +179,8 @@ public class PlayerHealth : MonoBehaviour
 
         Destroy(gameObject);
     }
+    private void OnDestroy()
+    {
+        SceneManager.LoadScene("FinalRuim");
+    }
 }
