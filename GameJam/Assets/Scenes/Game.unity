@@ -13994,6 +13994,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 152926101}
     - target: {fileID: 1135336318941732535, guid: 883ae964dfd8b9c4286bea9a5e194cef, type: 3}
+      propertyPath: attackAnimationName
+      value: Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135336318941732535, guid: 883ae964dfd8b9c4286bea9a5e194cef, type: 3}
       propertyPath: 'abilityUiSlots.Array.data[0]'
       value: 
       objectReference: {fileID: 377331059}
@@ -14001,6 +14005,10 @@ PrefabInstance:
       propertyPath: 'abilityUiSlots.Array.data[1]'
       value: 
       objectReference: {fileID: 1929022086}
+    - target: {fileID: 1135336318941732535, guid: 883ae964dfd8b9c4286bea9a5e194cef, type: 3}
+      propertyPath: abilityIcons.Array.data[0].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 8808849e5e387194fb47abe0580d1496, type: 3}
     - target: {fileID: 1135336318941732535, guid: 883ae964dfd8b9c4286bea9a5e194cef, type: 3}
       propertyPath: abilityIcons.Array.data[1].icon
       value: 
