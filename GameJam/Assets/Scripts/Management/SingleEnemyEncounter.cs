@@ -12,17 +12,24 @@ public class SingleEnemyEncounter : MonoBehaviour
     public List<Transform> cameraLockPoints;
     public float cameraMoveSpeed = 5f;
     [Tooltip("Tamanho ortográfico da câmera durante a luta (maior = mais afastado).")]
-    public float zoomedOutSize = 10f; // <-- NOVO
+    public float zoomedOutSize = 10f;
     [Tooltip("Velocidade da transição do zoom.")]
-    public float zoomSpeed = 3f; // <-- NOVO
+    public float zoomSpeed = 3f;
+
+    // --- CAMPO ADICIONADO ---
+    [Header("Configuração da Arena")]
+    [Tooltip("GameObject 'pai' que contém os colisores da arena.")]
+    public GameObject arenaBarriers;
+    // --- FIM DA ADIÇÃO ---
+
     private CameraController mainCameraScript;
     private Camera mainCamera;
-    private float originalCameraSize; // <-- NOVO
+    private float originalCameraSize;
 
     private bool isCombatActive = false;
     private GameObject spawnedEnemy;
     private Coroutine cameraLockCoroutine;
-    private Coroutine cameraZoomCoroutine; // <-- NOVO
+    private Coroutine cameraZoomCoroutine;
     private Transform chosenLockPoint;
     private Collider2D triggerArea;
 
@@ -33,7 +40,7 @@ public class SingleEnemyEncounter : MonoBehaviour
         {
             mainCameraScript = mainCamera.GetComponent<CameraController>();
             if (mainCameraScript == null) Debug.LogError("SingleEnemyEncounter NÃO ENCONTROU 'CameraController'!");
-            originalCameraSize = mainCamera.orthographicSize; // <-- NOVO
+            originalCameraSize = mainCamera.orthographicSize;
         }
         else Debug.LogError("SingleEnemyEncounter: Camera.main é NULA!");
 
@@ -41,6 +48,14 @@ public class SingleEnemyEncounter : MonoBehaviour
         if (!triggerArea.isTrigger) Debug.LogWarning($"Colisor em '{gameObject.name}' NÃO é Trigger.");
         if (specificEnemyPrefab == null) Debug.LogError($"'{gameObject.name}' não tem 'Specific Enemy Prefab'.");
         if (cameraLockPoints == null || cameraLockPoints.Count == 0) Debug.LogWarning($"'{gameObject.name}' não tem 'Camera Lock Points'.");
+
+        // --- ADICIONADO: Garante que as barreiras comecem desligadas ---
+        if (arenaBarriers != null)
+        {
+            arenaBarriers.SetActive(false);
+        }
+        // --- FIM DA ADIÇÃO ---
+
         Debug.Log($"[SingleEnemyEncounter] Start para '{gameObject.name}'. Zoom Original: {originalCameraSize}");
     }
 
@@ -57,14 +72,21 @@ public class SingleEnemyEncounter : MonoBehaviour
         isCombatActive = true;
         Debug.Log($"[SingleEnemyEncounter] Encontro iniciado em '{gameObject.name}'!");
 
+        // --- ADICIONADO: LIGA AS BARREIRAS ---
+        if (arenaBarriers != null)
+        {
+            arenaBarriers.SetActive(true);
+            Debug.Log("[SingleEnemyEncounter] Barreiras da Arena ATIVADAS.");
+        }
+        // --- FIM DA ADIÇÃO ---
+
         if (mainCameraScript != null)
         {
             Debug.Log("Câmera PARADA e Zoom Out iniciado.");
             mainCameraScript.enabled = false;
 
-            // Inicia Zoom Out
             if (cameraZoomCoroutine != null) StopCoroutine(cameraZoomCoroutine);
-            cameraZoomCoroutine = StartCoroutine(ZoomCamera(zoomedOutSize)); // <-- NOVO
+            cameraZoomCoroutine = StartCoroutine(ZoomCamera(zoomedOutSize));
 
             if (cameraLockPoints != null && cameraLockPoints.Count > 0)
             {
@@ -75,7 +97,7 @@ public class SingleEnemyEncounter : MonoBehaviour
         }
 
         Debug.Log($"Instanciando inimigo: {specificEnemyPrefab.name}...");
-        Vector3 spawnPos = new Vector3(29.5f, 12.5f, 0f);
+        Vector3 spawnPos = new Vector3(29.5f, 12.5f, 0f); // Nota: Este spawn parece estar fixo no código.
         spawnedEnemy = Instantiate(specificEnemyPrefab, spawnPos, Quaternion.identity);
         Debug.Log($"Inimigo instanciado em: {spawnPos}");
 
@@ -89,7 +111,6 @@ public class SingleEnemyEncounter : MonoBehaviour
         EndCombatEncounter();
     }
 
-    // Corrotina para mover a câmera
     private IEnumerator LockCameraPosition()
     {
         Vector3 targetPos = chosenLockPoint.position;
@@ -105,7 +126,6 @@ public class SingleEnemyEncounter : MonoBehaviour
         Debug.Log("[SingleEnemyEncounter] Câmera chegou ao ponto.");
     }
 
-    // --- NOVO: Corrotina para o Zoom (igual à do outro script) ---
     private IEnumerator ZoomCamera(float targetSize)
     {
         float currentSize = mainCamera.orthographicSize;
@@ -119,22 +139,28 @@ public class SingleEnemyEncounter : MonoBehaviour
         Debug.Log($"[SingleEnemyEncounter] Zoom concluído em {mainCamera.orthographicSize}");
         cameraZoomCoroutine = null;
     }
-    // --- FIM NOVO ---
 
     private void EndCombatEncounter()
     {
         Debug.Log("[SingleEnemyEncounter] EndCombatEncounter.");
-        // Para corrotinas
+
+        // --- ADICIONADO: DESLIGA AS BARREIRAS ---
+        if (arenaBarriers != null)
+        {
+            arenaBarriers.SetActive(false);
+            Debug.Log("[SingleEnemyEncounter] Barreiras da Arena DESATIVADAS.");
+        }
+        // --- FIM DA ADIÇÃO ---
+
         if (cameraLockCoroutine != null) StopCoroutine(cameraLockCoroutine);
         if (cameraZoomCoroutine != null) StopCoroutine(cameraZoomCoroutine);
 
-        // Inicia Zoom In
-        cameraZoomCoroutine = StartCoroutine(ZoomCamera(originalCameraSize)); // <-- NOVO
+        cameraZoomCoroutine = StartCoroutine(ZoomCamera(originalCameraSize));
 
         if (mainCameraScript != null)
         {
             Debug.Log("Câmera LIBERTADA.");
-            mainCameraScript.enabled = true; // Reativa o CameraController
+            mainCameraScript.enabled = true;
         }
 
         Debug.Log("Ganhou");

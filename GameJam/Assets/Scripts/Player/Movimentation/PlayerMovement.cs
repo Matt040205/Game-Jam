@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
     // --- **NOVO:** UI Reference ---
     [Header("UI")]
-    [Tooltip("Arraste a Image da barra de stamina (com Image Type = Filled) para c�.")]
+    [Tooltip("Arraste a Image da barra de stamina (com Image Type = Filled) para cá.")]
     public Image staminaBarImage;
     // --- **FIM NOVO** ---
 
@@ -98,14 +98,60 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        // --- **CORRE��O F�SICA** ---
+        // --- **CORREÇÃO FÍSICA** ---
         if (isDashing) rb.linearVelocity = dashDirection * dashSpeed;
         else if (isMoving) rb.linearVelocity = moveDirection * moveSpeed;
         else rb.linearVelocity = Vector2.zero;
-        // --- **FIM CORRE��O** ---
+        // --- **FIM CORREÇÃO** ---
     }
 
-    private void UpdateAnimations() {/* ... sem altera��es ... */}
+    // --- MODIFICADO: Lógica de Animação e Flip ---
+    private void UpdateAnimations()
+    {
+        if (animator == null || spriteRenderer == null) return;
+
+        // --- Lógica do Animator (Exemplo) ---
+        animator.SetBool("isMoving", isMoving);
+
+        // Atualiza o "blend tree" de movimento (se você tiver um)
+        if (isMoving)
+        {
+            animator.SetFloat("MoveX", moveDirection.x);
+            animator.SetFloat("MoveY", moveDirection.y);
+        }
+        else if (!isDashing) // Se parado e sem dash, usa a última direção
+        {
+            animator.SetFloat("MoveX", lastMoveDirection.x);
+            animator.SetFloat("MoveY", lastMoveDirection.y);
+        }
+        // --- Fim Lógica Animator ---
+
+
+        // --- Lógica do Flip (Inverter Sprite) ---
+        float horizontalDirection = 0f;
+
+        if (isDashing)
+        {
+            horizontalDirection = dashDirection.x; // Usa a direção do dash
+        }
+        else if (isMoving)
+        {
+            horizontalDirection = moveDirection.x; // Usa a direção do input
+        }
+        // Se (horizontalDirection == 0), ele mantém o flip anterior
+
+        // Inverte a sprite com base na direção horizontal
+        if (horizontalDirection > 0.01f)
+        {
+            spriteRenderer.flipX = false; // Olhando para a direita
+        }
+        else if (horizontalDirection < -0.01f)
+        {
+            spriteRenderer.flipX = true; // Olhando para a esquerda (invertido)
+        }
+        // --- Fim Lógica do Flip ---
+    }
+    // --- FIM DA MODIFICAÇÃO ---
 
     private IEnumerator Dash()
     {
@@ -145,7 +191,7 @@ public class PlayerMovement : MonoBehaviour
         {
             staminaBarImage.fillAmount = currentStamina / maxStamina;
         }
-        // else Debug.LogWarning("[PlayerMovement] Stamina Bar Image n�o definida!"); // Opcional
+        // else Debug.LogWarning("[PlayerMovement] Stamina Bar Image não definida!"); // Opcional
     }
     // --- **FIM NOVO** ---
 
